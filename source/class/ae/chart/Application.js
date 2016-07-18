@@ -52,20 +52,47 @@ qx.Class.define("ae.chart.Application",
         Below is your actual application code...
       -------------------------------------------------------------------------
       */
+      var con = new qx.ui.container.Composite(new qx.ui.layout.VBox());
+      var chartModel = new ae.chart.model.Chart();
+      var chartLayout = new ae.chart.model.Layout();
+      chartModel.setLayout(chartLayout);
+      chartLayout.setTitle("Toto");
+      chartLayout.setPlot_bgcolor("#AAA");
+      
+      var scatter = new ae.chart.model.traces.Scatter();
+      scatter.setX([1, 2, 3, 4]);
+      scatter.setY([10, 15, 13, 17]);
 
-      // Create a button
-      var button1 = new qx.ui.form.Button("First Button", "ae/chart/test.png");
+      var traces = new qx.data.Array();
+      traces.push(scatter);
+      chartModel.setTraces(traces);
+      
+      var chart = new ae.chart.ui.Chart(chartModel);
+      
+     
 
-      // Document is the application root
       var doc = this.getRoot();
 
-      // Add button to document at fixed coordinates
-      doc.add(button1, {left: 100, top: 50});
-
-      // Add an event listener
-      button1.addListener("execute", function(e) {
-        alert("Hello World!");
+      con.add(chart,{flex:1});
+      
+      var button = new qx.ui.form.Button("Title");
+      button.addListener("execute",function(e){
+          chartLayout.setTitle("Tutu");
+          var titlefont = new qx.bom.Font(36,["Arial","verdana"]);
+          titlefont.setColor("#FFF");
+          chartLayout.setTitlefont(titlefont);
+          
+          chartLayout.setPaper_bgcolor("#F00");
+          
+          scatter.setY([2, 15, 1, 17]);
+          
       });
+      
+      
+      con.add(button);
+      
+      doc.add(con, {edge: 0});
+
     }
   }
 });
