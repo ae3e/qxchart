@@ -85,6 +85,9 @@ qx.Class.define("ae.chart.Application",
           chartLayout.setPaper_bgcolor("#F00");
           
           scatter.setY([2, 15, 1, 17]);
+          //scatter.setFillcolor("#00F");
+          //scatter.setFill("tozeroy");
+          scatter.setMode("markers");
           
       });
       

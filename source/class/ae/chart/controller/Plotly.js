@@ -58,6 +58,8 @@ qx.Class.define("ae.chart.controller.Plotly",
 			var layout = qx.util.Serializer.toNativeObject(model.getLayout());
 			var data = qx.util.Serializer.toNativeObject(model.getTraces());
 
+			//@todo : REMOVE r and t from SCATTER IF THEY ARE NULL!!!!
+			
 			Plotly.plot(this.getPlotlyDiv(),data,layout);
 			
 			//Bind model to the chart by adding listeners to the model			
@@ -67,13 +69,8 @@ qx.Class.define("ae.chart.controller.Plotly",
 
 				if(nm[0]=="layout" && nm.length==2){
 					var obj={};
-					//Convert to native js object if it's a qooxdoo object or use the default value
-					if(e.getData().value.classname){
-						obj[nm[1]]=qx.util.Serializer.toNativeObject(e.getData().value);
-					}else{
-						obj[nm[1]]=e.getData().value;
-					}
-					
+					obj[nm[1]]=qx.util.Serializer.toNativeObject(e.getData().value);
+
 					Plotly.relayout(this.getPlotlyDiv(),obj);
 				}
 				
@@ -84,19 +81,10 @@ qx.Class.define("ae.chart.controller.Plotly",
 					var str = e.getData().name;
 					var index =str.substring(str.lastIndexOf("[")+1,str.lastIndexOf("]"));
 
-
+					
 					Plotly.restyle(this.getPlotlyDiv(),obj,index);
 				}
-			},this);
-			
-			model.addListener("changeLayout", function(e){
-				e.getData().addListener("changeTitle", function(e){
-					
-					Plotly.relayout(this.getPlotlyDiv(),{"title":e.getData()});
-				},this);
-				//Plotly.relayout(this.getPlotlyDiv(),{e.getData()});
-			},this);
-			
+			},this);			
 			
 			model.addListener("addTrace", function(e){
 				//var skLayer = e.getData();
