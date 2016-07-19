@@ -6,51 +6,220 @@ qx.Class.define("ae.chart.model.Layout", {
 	include :  qx.data.marshal.MEventBubbling,
 	
 	properties : {
+
+		/*angularaxis : {
+			
+		}*/
+		
 		/**
-		 * Chart's title
+		 * Annotations
+		 */
+		annotations : {
+			check : "qx.data.Array",
+			apply : "_apply",
+			init : new qx.data.Array()
+		},
+		
+		/**
+		 * Determines whether or not the dimensions of the figure are computed as a function of the display size.
+		 */
+		autosize : {
+			check : [true,false,"initial"],
+			apply : "_apply",
+			init : true
+		},
+		
+		/**
+		 * For polar plots only. Sets the direction corresponding to positive angles.
+		 */
+		direction : {
+			check : ["clockwise","counterclockwise"],
+			apply : "_apply",
+			init : null
+		},
+		
+		/**
+		 * Determines the mode of drag interactions. *select* and *lasso* apply only to scatter traces with markers or text. *orbit* and *turntable* apply only to 3D scenes.
+		 */
+		dragmode : {
+			check : ["zoom","pan","select","lasso","orbit","turntable"],
+			apply : "_apply",
+			init : "zoom"
+		},
+		
+		/**
+		 * Sets the global font. Note that fonts used in traces and other layout components inherit from the global font.
+		 */
+		font : {
+			check : "qx.bom.Font",
+			nullable : true,
+			apply : "_apply",
+			init : null
+		},
+		
+		/*
+		geo : {
+		 
+		}
+		*/
+		
+		/**
+		 * Sets the plot's height (in px).
+		 */
+		height : {
+			check : "Number",
+			apply : "_apply",
+			init : null
+		},
+		
+		/**
+		 * Determines the mode of hover interactions.
+		 */
+		hovermode : {
+			check : ["x","y","closest",false],
+			apply : "_apply",
+			init : null
+		},
+		
+		/**
+		 * images
+		 */
+		images : {
+			check : "qx.data.Array",
+			apply : "_apply",
+			init : new qx.data.Array()
+		},
+		
+		/*
+		legend : {
+		
+		},
+		
+		margin : {
+		
+		},
+		*/
+		
+		/**
+		 * For polar plots only. Rotates the entire polar by the given angle.
+		 */
+		orientation : {
+			check : "Number",
+			apply : "_apply",
+			init : null
+		},
+		
+		/**
+		 * Sets the color of paper where the graph is drawn.
+		 */
+		paper_bgcolor : {
+			check : "String",
+			nullable : true,
+			apply : "_apply",
+			init : null
+		},
+		
+		/**
+		 * Sets the color of plotting area in-between x and y axes.
+		 */
+		plot_bgcolor : {
+			check : "String",
+			nullable : true,
+			apply : "_apply",
+			init : null
+		},
+		
+		/*
+		radialaxis : {
+		
+		},
+		
+		scene : {
+		
+		},
+		*/
+		
+		/**
+		 * Sets the decimal and thousand separators. For example, *. * puts a '.' before decimals and a space between thousands.
+		 */
+		separators : {
+			check : "String",
+			apply : "_apply",
+			init : null
+		},
+		
+		/**
+		 * Shapes
+		 */
+		shapes : {
+			check : "qx.data.Array",
+			apply : "_apply",
+			init : new qx.data.Array()
+		},
+		
+		/**
+		 * Determines whether or not a legend is drawn.
+		 */
+		showlegend : {
+			check : "Booleany",
+			apply : "_apply",
+			init : null
+		},
+		
+		/*
+		ternary : {
+		
+		},
+		*/
+		
+		/**
+		 * Sets the plot's title.
 		 */
 		title : {
 			check : "String",
-			event : "changeTitle",
-			nullable : true,
-			apply : "_apply",
-			init : null
-		},
-		
-		paper_bgcolor : {
-			check : "String",
-			event : "changePaper_bgcolor",
-			nullable : true,
-			apply : "_apply",
-			init : null
-		},
-		
-		plot_bgcolor : {
-			check : "String",
-			event : "changePlot_bgcolor",
 			nullable : true,
 			apply : "_apply",
 			init : null
 		},
 		
 		/**
-		 * Only family, color and size work
+		 * Sets the title font. Only family, color and size work
 		 */
 		titlefont : {
 			check : "qx.bom.Font",
-			event : "changeTitlefont",
 			nullable : true,
 			apply : "_apply",
 			init : null
 		},
 		
-		font : {
-			check : "qx.bom.Font",
-			event : "changeTitlefont",
+		/**
+		 * Sets the plot's width (in px).
+		 */
+		width : {
+			check : "Number",
 			nullable : true,
 			apply : "_apply",
 			init : null
+		},
+		
+		/**
+		 * x axes
+		 */
+		xaxes : {
+			check : "qx.data.Array",
+			apply : "_apply",
+			init : new qx.data.Array()
+		},
+		
+		/**
+		 * y axes
+		 */
+		yaxes : {
+			check : "qx.data.Array",
+			apply : "_apply",
+			init : new qx.data.Array()
 		}
+		
 	},
 
 
