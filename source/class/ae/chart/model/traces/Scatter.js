@@ -123,6 +123,8 @@ qx.Class.define("ae.chart.model.traces.Scatter", {
 		 */
 		r : {
 			check : "Array",
+			nullable : true,
+			init : null,
 			apply : "_apply"
 		},
 		
@@ -138,12 +140,12 @@ qx.Class.define("ae.chart.model.traces.Scatter", {
 		/**
 		 * For polar chart only.Sets the angular coordinates.
 		 */
-		/*t : {
+		t : {
 			check : "Array",
 			nullable : true,
 			init : null,
 			apply : "_apply"
-		},*/
+		},
 		
 		/**
 		 * Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates.

@@ -58,7 +58,12 @@ qx.Class.define("ae.chart.controller.Plotly",
 			var layout = qx.util.Serializer.toNativeObject(model.getLayout());
 			var data = qx.util.Serializer.toNativeObject(model.getTraces());
 
-			//@todo : REMOVE r and t from SCATTER IF THEY ARE NULL!!!!
+			//Remove r and t from scatter if they are null otherwise chart won't be drawn
+			for(var i=0;i<data.length;i++){
+				if(data[i].type=="scatter"){
+					delete data[i].r,data[i].t;
+				}
+			}
 			
 			Plotly.plot(this.getPlotlyDiv(),data,layout);
 			
