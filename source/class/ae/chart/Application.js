@@ -62,13 +62,34 @@ qx.Class.define("ae.chart.Application",
       var scatter = new ae.chart.model.traces.Scatter();
       scatter.setX([1, 2, 3, 4]);
       scatter.setY([10, 15, 13, 17]);
+      //scatter.setYaxis("y2");
+      
+      var scatter2 = new ae.chart.model.traces.Scatter();
+      scatter2.setX([1, 2, 3, 4]);
+      scatter2.setY([13, 17, 15, 20]);
+      scatter2.setYaxis("y2");
 
       
       
       var traces = new qx.data.Array();
       traces.push(scatter);
+      traces.push(scatter2);
       chartModel.setTraces(traces);
       
+      var axis = new ae.chart.model.axis.Axis();
+      axis.setColor("#F0F");
+      
+      var axis2 = new ae.chart.model.axis.Axis();
+      axis2.setColor("#0FF");
+      axis2.setSide("right");
+      axis2.setOverlaying("y");
+      
+      var axes = new qx.data.Array();
+      axes.push(axis);
+      axes.push(axis2);
+      chartLayout.setYaxes(axes);
+      
+      //scatter.setYaxis
       var chart = new ae.chart.ui.Chart(chartModel);
       
      
@@ -90,6 +111,7 @@ qx.Class.define("ae.chart.Application",
           //scatter.setFillcolor("#00F");
           //scatter.setFill("tozeroy");
           //scatter.setMode("markers");
+          scatter.setName("Temperature");
           
           
           var marker = new ae.chart.model.Marker();
@@ -101,6 +123,8 @@ qx.Class.define("ae.chart.Application",
           line.setWidth(4);
           line.setColor("#F0F");
           scatter.setLine(line);
+          
+          axis.setColor("#FFF");
       });
       
       

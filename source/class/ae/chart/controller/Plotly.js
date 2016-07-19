@@ -58,29 +58,53 @@ qx.Class.define("ae.chart.controller.Plotly",
 			
 			//I use my own serializer to remove undefined properties
 			var layout = ae.util.Serializer.toNativeObject(model.getLayout());
-			var data = ae.util.Serializer.toNativeObject(model.getTraces());
+
+			if(layout.yaxes){
+				for(var i=0;i<layout.yaxes.length;i++){
+					layout["yaxis"+(i+1)]=ae.util.Serializer.toNativeObject(layout.yaxes[i]);
+				}
+			}
 			
+			if(layout.xaxes){
+				for(var i=0;i<layout.xaxes.length;i++){
+					layout["xaxis"+(i+1)]=ae.util.Serializer.toNativeObject(layout.xaxes[i]);
+				}
+			}
+			
+			var data = ae.util.Serializer.toNativeObject(model.getTraces());
 			Plotly.plot(this.getPlotlyDiv(),data,layout,model.getConfig());
 			
 			//Bind model to the chart by adding listeners to the model			
 			model.addListener("changeBubble", function(e){
 
-				var nm = e.getData().name.split(".");
-
-				if(nm[0]=="layout" && nm.length==2){
-					var obj={};
-					obj[nm[1]]=ae.util.Serializer.toNativeObject(e.getData().value);
-
+				var name = e.getData().name;
+				var value = e.getData().value;
+				
+				var obj={};
+				
+				if(name.startsWith("layout")){
+					var attr = name.substr(name.indexOf(".")+1);
+					
+					if(attr.startsWith("xaxes") || attr.startsWith("yaxes")){
+						var index =parseInt(attr.substring(attr.indexOf("[")+1,attr.indexOf("]")));
+						if(index==0){
+							attr = (attr.substring(0,attr.indexOf("["))+attr.substr(attr.indexOf("]")+1)).replace("e","i");
+						}else{
+							attr = (attr.substring(0,attr.indexOf("["))+(index+1)+attr.substr(attr.indexOf("]")+1)).replace("e","i");
+						}
+						
+					}
+					obj[attr]= ae.util.Serializer.toNativeObject(value);
+					
 					Plotly.relayout(this.getPlotlyDiv(),obj);
 				}
 				
-				if(nm[0].startsWith("traces") && nm.length==2){
-					var obj={};
-					obj[nm[1]]=ae.util.Serializer.toNativeObject(e.getData().value);
-
-					var str = e.getData().name;
-					var index =str.substring(str.lastIndexOf("[")+1,str.lastIndexOf("]"));
-
+				if(name.startsWith("traces")){
+					var attr = name.substr(name.indexOf(".")+1);
+					var index =name.substring(name.indexOf("[")+1,name.indexOf("]"));
+					
+					obj[attr]=ae.util.Serializer.toNativeObject(value);
+					
 					Plotly.restyle(this.getPlotlyDiv(),obj,index);
 				}
 			},this);			
