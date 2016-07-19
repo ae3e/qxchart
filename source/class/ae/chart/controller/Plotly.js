@@ -60,7 +60,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 			var layout = ae.util.Serializer.toNativeObject(model.getLayout());
 			var data = ae.util.Serializer.toNativeObject(model.getTraces());
 			
-			Plotly.plot(this.getPlotlyDiv(),data,layout);
+			Plotly.plot(this.getPlotlyDiv(),data,layout,model.getConfig());
 			
 			//Bind model to the chart by adding listeners to the model			
 			model.addListener("changeBubble", function(e){
@@ -69,14 +69,14 @@ qx.Class.define("ae.chart.controller.Plotly",
 
 				if(nm[0]=="layout" && nm.length==2){
 					var obj={};
-					obj[nm[1]]=qx.util.Serializer.toNativeObject(e.getData().value);
+					obj[nm[1]]=ae.util.Serializer.toNativeObject(e.getData().value);
 
 					Plotly.relayout(this.getPlotlyDiv(),obj);
 				}
 				
 				if(nm[0].startsWith("traces") && nm.length==2){
 					var obj={};
-					obj[nm[1]]=qx.util.Serializer.toNativeObject(e.getData().value);
+					obj[nm[1]]=ae.util.Serializer.toNativeObject(e.getData().value);
 
 					var str = e.getData().name;
 					var index =str.substring(str.lastIndexOf("[")+1,str.lastIndexOf("]"));

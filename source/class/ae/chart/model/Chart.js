@@ -7,7 +7,7 @@ qx.Class.define("ae.chart.model.Chart", {
 	
 	properties : {
 		/**
-		 * Chart's layout
+		 * layout
 		 */
 		layout : {
 			check : "ae.chart.model.Layout",
@@ -17,11 +17,22 @@ qx.Class.define("ae.chart.model.Chart", {
 			init : new ae.chart.model.Layout()
 		},
 		
+		/**
+		 * traces
+		 */
 		traces : {
 			check : "qx.data.Array",
 			nullable : false,
 			apply : "_apply",
 			init : new qx.data.Array()
+		},
+		
+		/**
+		 * extra config
+		 */
+		config : {
+			check : "Object",
+			init : {displayModeBar: false}
 		}
 	},
 
