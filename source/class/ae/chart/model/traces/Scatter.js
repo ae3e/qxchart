@@ -85,11 +85,15 @@ qx.Class.define("ae.chart.model.traces.Scatter", {
 		
 		/*line : {
 			
-		},
-		
-		marker : {
-			
 		},*/
+		
+		/**
+		 * Marker
+		 */
+		marker : {
+			check : "ae.chart.model.Marker",
+			apply : "_apply"
+		},
 		
 		/**
 		 * Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text` elements appear at the coordinates. Otherwise, the `text` elements appear on hover. If there are less than 20 points, then the default is *lines+markers*. Otherwise, *lines*.
@@ -123,8 +127,8 @@ qx.Class.define("ae.chart.model.traces.Scatter", {
 		 */
 		r : {
 			check : "Array",
-			nullable : true,
-			init : null,
+			//nullable : true,
+			//init : null,
 			apply : "_apply"
 		},
 		
@@ -142,8 +146,8 @@ qx.Class.define("ae.chart.model.traces.Scatter", {
 		 */
 		t : {
 			check : "Array",
-			nullable : true,
-			init : null,
+			//nullable : true,
+			//init : null,
 			apply : "_apply"
 		},
 		
@@ -234,7 +238,7 @@ qx.Class.define("ae.chart.model.traces.Scatter", {
 			check : "String",
 			init : "y",
 			apply : "_apply"
-		},
+		}
 	},
 
 

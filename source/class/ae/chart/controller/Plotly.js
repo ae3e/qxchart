@@ -54,16 +54,11 @@ qx.Class.define("ae.chart.controller.Plotly",
 				return;
 			}
 
-			//Init the chart with data in the model			 
-			var layout = qx.util.Serializer.toNativeObject(model.getLayout());
-			var data = qx.util.Serializer.toNativeObject(model.getTraces());
-
-			//Remove r and t from scatter if they are null otherwise chart won't be drawn
-			for(var i=0;i<data.length;i++){
-				if(data[i].type=="scatter"){
-					delete data[i].r,data[i].t;
-				}
-			}
+			//Init the chart with data in the model
+			
+			//I use my own serializer to remove undefined properties
+			var layout = ae.util.Serializer.toNativeObject(model.getLayout());
+			var data = ae.util.Serializer.toNativeObject(model.getTraces());
 			
 			Plotly.plot(this.getPlotlyDiv(),data,layout);
 			
@@ -81,12 +76,11 @@ qx.Class.define("ae.chart.controller.Plotly",
 				
 				if(nm[0].startsWith("traces") && nm.length==2){
 					var obj={};
-					obj[nm[1]]=[e.getData().value];
+					obj[nm[1]]=qx.util.Serializer.toNativeObject(e.getData().value);
 
 					var str = e.getData().name;
 					var index =str.substring(str.lastIndexOf("[")+1,str.lastIndexOf("]"));
 
-					
 					Plotly.restyle(this.getPlotlyDiv(),obj,index);
 				}
 			},this);			
