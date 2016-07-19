@@ -89,13 +89,18 @@ qx.Class.define("ae.chart.Application",
           scatter.setY([[2, 15, 1, 17]]);
           //scatter.setFillcolor("#00F");
           //scatter.setFill("tozeroy");
-          scatter.setMode("markers");
+          //scatter.setMode("markers");
           
           
           var marker = new ae.chart.model.Marker();
           marker.setSize(12);
           marker.setColor("#FF0");
           scatter.setMarker(marker);
+          
+          var line = new ae.chart.model.Line();
+          line.setWidth(4);
+          line.setColor("#F0F");
+          scatter.setLine(line);
       });
       
       

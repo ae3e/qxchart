@@ -108,6 +108,7 @@ qx.Class.define("ae.util.Serializer",
 
           // ignore undefined properties 
           if (!object.hasOwnProperty("$$user_"+name))
+          //if (value === null)
           {
             continue;
           }

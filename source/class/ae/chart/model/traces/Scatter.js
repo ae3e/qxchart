@@ -83,9 +83,13 @@ qx.Class.define("ae.chart.model.traces.Scatter", {
 			apply : "_apply"
 		},
 		
-		/*line : {
-			
-		},*/
+		/**
+		 * Line
+		 */
+		line : {
+			check : "ae.chart.model.Line",
+			apply : "_apply"
+		},
 		
 		/**
 		 * Marker
