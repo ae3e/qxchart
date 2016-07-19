@@ -19,6 +19,7 @@
     "fix",
     "info",
     "lint",
+    "lib",
     "migration",
     "pretty",
     "profiling",
@@ -73,6 +74,49 @@
     // If you want to tweak a job setting, see the following sample where
     // the "format" feature of the "build-script" job is overridden.
     // To see a list of available jobs, invoke 'generate.py x'.
+    "lib": {
+		"library": [
+			{
+				"manifest": "Manifest.json"
+			}
+		],
+
+		"extend": [ "cache" ],
+
+		//"include": ["ae.*"],
+		"exclude": ["ae.chart.test.*"],
+		
+		"add-script" : [
+			{"uri": "https://cdn.plot.ly/plotly-1.14.2.min.js"}
+		],
+		"environment": {
+			"qx.version" : "${QOOXDOO_VERSION}",
+			"qx.debug": false,
+			"qx.aspects": false
+		},
+
+		"compile-options": {
+			"paths": {
+				"file": "build/script/qxchart.js",
+				"app-root": "./build",
+				"gzip": true
+			},
+			"code": {
+				"format": false,
+				"except": [],
+				"optimize": ["basecalls", "variables", "privates", "strings", "whitespace"]
+			}
+		},
+
+		"compile": {
+			"type": "build"
+		},
+
+		"copy-resources": {
+			"target": "build"
+		}
+	},
+	
     "core" : {
 	       "add-script" : [
 	         {"uri": "resource/plotly/plotly.js"}
