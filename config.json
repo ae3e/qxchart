@@ -73,6 +73,18 @@
     // If you want to tweak a job setting, see the following sample where
     // the "format" feature of the "build-script" job is overridden.
     // To see a list of available jobs, invoke 'generate.py x'.
+    "core" : {
+	       "add-script" : [
+	         {"uri": "resource/plotly/plotly.js"}
+	       ]
+	   },
+      "source": {
+      	"extend" : ["core"]
+      },
+
+      "build": {
+      	"extend" : ["core"]
+      }
     /*
     ,"build-script" :
     {
