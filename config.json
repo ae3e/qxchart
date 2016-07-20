@@ -44,7 +44,8 @@
     "APPLICATION"  : "ae.chart",
     "QOOXDOO_PATH" : "../../../qooxdoo",
     "QXTHEME"      : "ae.chart.theme.Theme",
-    "API_EXCLUDE"  : ["qx.test.*", "${APPLICATION}.theme.*", "${APPLICATION}.test.*"],
+    "API_INCLUDE": ["${APPLICATION}.controller.*","${APPLICATION}.model.*","${APPLICATION}.ui.*"],
+    "API_EXCLUDE"  : ["qx.*", "${APPLICATION}.theme.*", "${APPLICATION}.test.*"],
     "LOCALES"      : [ "en" ],
     "CACHE"        : "${TMPDIR}/qx${QOOXDOO_VERSION}/cache",
     "ROOT"         : "."

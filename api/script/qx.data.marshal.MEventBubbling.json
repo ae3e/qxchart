@@ -1,0 +1,1 @@
+{"attributes": {"fullName": "qx.data.marshal.MEventBubbling", "packageName": "qx.data.marshal", "isStatic": true, "name": "MEventBubbling", "includer": "ae.chart.model.Layout,ae.chart.model.Marker,ae.chart.model.traces.Trace,ae.chart.model.Chart,ae.chart.model.Line,ae.chart.model.axis.Axis"}, "type": "class"}

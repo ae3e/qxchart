@@ -54,10 +54,13 @@ qx.Class.define("ae.chart.Application",
       */
       var con = new qx.ui.container.Composite(new qx.ui.layout.VBox());
       var chartModel = new ae.chart.model.Chart();
-      var chartLayout = new ae.chart.model.Layout();
+      var chartLayout = new ae.chart.model.Layout().set({
+    	  title:"My chart",
+    	  plot_bgcolor:"#AAA"
+      });
       chartModel.setLayout(chartLayout);
-      chartLayout.setTitle("Toto");
-      chartLayout.setPlot_bgcolor("#AAA");
+      //chartLayout.set({}).setTitle("Toto");
+      //chartLayout.setPlot_bgcolor("#AAA");
       
       var scatter = new ae.chart.model.traces.Scatter();
       scatter.setX([1, 2, 3, 4]);
