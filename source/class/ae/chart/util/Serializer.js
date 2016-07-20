@@ -4,7 +4,7 @@
  * @ignore(qx.data, qx.data.IListData)
  * @ignore(qx.locale, qx.locale.LocalizedString)
  */
-qx.Class.define("ae.util.Serializer",
+qx.Class.define("ae.chart.util.Serializer",
 {
   statics :
   {
@@ -43,7 +43,7 @@ qx.Class.define("ae.util.Serializer",
         result = [];
         for (var i = 0; i < object.getLength(); i++)
         {
-          result.push(ae.util.Serializer.toNativeObject(
+          result.push(ae.chart.util.Serializer.toNativeObject(
             object.getItem(i), qxSerializer, dateFormat)
           );
         }
@@ -57,7 +57,7 @@ qx.Class.define("ae.util.Serializer",
         result = [];
         for (var i = 0; i < object.length; i++)
         {
-          result.push(ae.util.Serializer.toNativeObject(
+          result.push(ae.chart.util.Serializer.toNativeObject(
             object[i], qxSerializer, dateFormat)
           );
         }
@@ -117,7 +117,7 @@ qx.Class.define("ae.util.Serializer",
           
           
           
-          result[name] = ae.util.Serializer.toNativeObject(
+          result[name] = ae.chart.util.Serializer.toNativeObject(
             value, qxSerializer, dateFormat
           );
         }
@@ -142,7 +142,7 @@ qx.Class.define("ae.util.Serializer",
 
         for (var key in object)
         {
-          result[key] = ae.util.Serializer.toNativeObject(
+          result[key] = ae.chart.util.Serializer.toNativeObject(
             object[key], qxSerializer, dateFormat
           );
         }
@@ -180,7 +180,7 @@ qx.Class.define("ae.util.Serializer",
       if (qx.data && qx.data.IListData && qx.Class.hasInterface(object.constructor, qx.data.IListData)) {
         result += "[";
         for (var i = 0; i < object.getLength(); i++) {
-          result += ae.util.Serializer.toJson(object.getItem(i), qxSerializer, dateFormat) + ",";
+          result += ae.chart.util.Serializer.toJson(object.getItem(i), qxSerializer, dateFormat) + ",";
         }
         if (result != "[") {
           result = result.substring(0, result.length - 1);
@@ -192,7 +192,7 @@ qx.Class.define("ae.util.Serializer",
       if (qx.lang.Type.isArray(object)) {
         result += "[";
         for (var i = 0; i < object.length; i++) {
-          result += ae.util.Serializer.toJson(object[i], qxSerializer, dateFormat) + ",";
+          result += ae.chart.util.Serializer.toJson(object[i], qxSerializer, dateFormat) + ",";
         }
         if (result != "[") {
           result = result.substring(0, result.length - 1);
@@ -229,7 +229,7 @@ qx.Class.define("ae.util.Serializer",
             continue;
           }
           var value = object["get" + qx.lang.String.firstUp(name)]();
-          result += '"' + name + '":' + ae.util.Serializer.toJson(value, qxSerializer, dateFormat) + ",";
+          result += '"' + name + '":' + ae.chart.util.Serializer.toJson(value, qxSerializer, dateFormat) + ",";
         }
         if (result != "{") {
           result = result.substring(0, result.length - 1);
@@ -253,7 +253,7 @@ qx.Class.define("ae.util.Serializer",
         result += "{";
         for (var key in object) {
           result += '"' + key + '":' +
-                    ae.util.Serializer.toJson(object[key], qxSerializer, dateFormat) + ",";
+                    ae.chart.util.Serializer.toJson(object[key], qxSerializer, dateFormat) + ",";
         }
         if (result != "{") {
           result = result.substring(0, result.length - 1);

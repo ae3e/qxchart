@@ -1,7 +1,7 @@
 ﻿/**
  * Layout
  */
-qx.Class.define("ae.chart.model.Layout", {
+qx.Class.define("ae.chart.model.layout.Layout", {
 	extend : qx.core.Object,
 	include :  qx.data.marshal.MEventBubbling,
 	

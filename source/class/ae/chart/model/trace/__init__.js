@@ -1,0 +1,3 @@
+/**
+ * Traces are object for representing charts : scatter, pie, bar,...
+ */

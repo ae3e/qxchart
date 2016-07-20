@@ -54,7 +54,7 @@ qx.Class.define("ae.chart.Application",
       */
       var con = new qx.ui.container.Composite(new qx.ui.layout.VBox());
       var chartModel = new ae.chart.model.Chart();
-      var chartLayout = new ae.chart.model.Layout().set({
+      var chartLayout = new ae.chart.model.layout.Layout().set({
     	  title:"My chart",
     	  plot_bgcolor:"#AAA"
       });
@@ -62,12 +62,12 @@ qx.Class.define("ae.chart.Application",
       //chartLayout.set({}).setTitle("Toto");
       //chartLayout.setPlot_bgcolor("#AAA");
       
-      var scatter = new ae.chart.model.traces.Scatter();
+      var scatter = new ae.chart.model.trace.Scatter();
       scatter.setX([1, 2, 3, 4]);
       scatter.setY([10, 15, 13, 17]);
       //scatter.setYaxis("y2");
       
-      var scatter2 = new ae.chart.model.traces.Scatter();
+      var scatter2 = new ae.chart.model.trace.Scatter();
       scatter2.setX([1, 2, 3, 4]);
       scatter2.setY([13, 17, 15, 20]);
       scatter2.setYaxis("y2");
@@ -117,12 +117,12 @@ qx.Class.define("ae.chart.Application",
           scatter.setName("Temperature");
           
           
-          var marker = new ae.chart.model.Marker();
+          var marker = new ae.chart.model.trace.auxiliary.Marker();
           marker.setSize(12);
           marker.setColor("#FF0");
           scatter.setMarker(marker);
           
-          var line = new ae.chart.model.Line();
+          var line = new ae.chart.model.trace.auxiliary.Line();
           line.setWidth(4);
           line.setColor("#F0F");
           scatter.setLine(line);

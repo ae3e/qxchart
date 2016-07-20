@@ -1,7 +1,7 @@
 ﻿/**
- * Marker
+ * An object containing specifications of the marker points.
  */
-qx.Class.define("ae.chart.model.Marker", {
+qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 	extend : qx.core.Object,
 	include :  qx.data.marshal.MEventBubbling,
 	

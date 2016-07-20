@@ -3,8 +3,8 @@
  * 
  * The scatter trace type encompasses line charts, scatter charts, text charts, and bubble charts. The data visualized as scatter point or lines is set in `x` and `y`. Text (appearing either on the chart or on hover only) is via `text`. Bubble charts are achieved by setting `marker.size` and/or `marker.color` to a numerical arrays.
  */
-qx.Class.define("ae.chart.model.traces.Scatter", {
-	extend : ae.chart.model.traces.Trace,
+qx.Class.define("ae.chart.model.trace.Scatter", {
+	extend : ae.chart.model.trace.Trace,
 	
 	properties : {
 		
@@ -87,7 +87,7 @@ qx.Class.define("ae.chart.model.traces.Scatter", {
 		 * Line
 		 */
 		line : {
-			check : "ae.chart.model.Line",
+			check : "ae.chart.model.trace.auxiliary.Line",
 			apply : "_apply"
 		},
 		
@@ -95,7 +95,7 @@ qx.Class.define("ae.chart.model.traces.Scatter", {
 		 * Marker
 		 */
 		marker : {
-			check : "ae.chart.model.Marker",
+			check : "ae.chart.model.trace.auxiliary.Marker",
 			apply : "_apply"
 		},
 		

@@ -1,7 +1,7 @@
 ﻿/**
- * Marker
+ * An object containing specifications of the line segments.
  */
-qx.Class.define("ae.chart.model.Line", {
+qx.Class.define("ae.chart.model.trace.auxiliary.Line", {
 	extend : qx.core.Object,
 	include :  qx.data.marshal.MEventBubbling,
 	

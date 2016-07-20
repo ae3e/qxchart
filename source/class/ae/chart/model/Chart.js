@@ -1,5 +1,5 @@
 ﻿/**
- * Chart
+ * Chart's model
  */
 qx.Class.define("ae.chart.model.Chart", {
 	extend : qx.core.Object,
@@ -10,11 +10,11 @@ qx.Class.define("ae.chart.model.Chart", {
 		 * layout
 		 */
 		layout : {
-			check : "ae.chart.model.Layout",
+			check : "ae.chart.model.layout.Layout",
 			event : "changeLayout",
 			nullable : false,
 			apply : "_apply",
-			init : new ae.chart.model.Layout()
+			init : new ae.chart.model.layout.Layout()
 		},
 		
 		/**
