@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Controller links map's model and Plotly chart
  * 
  * @ignore(Plotly.*)
