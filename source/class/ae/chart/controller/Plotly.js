@@ -101,7 +101,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 					Plotly.relayout(this.getPlotlyDiv(),obj);
 				}
 				
-				if(name.startsWith("traces")){
+				if(name.startsWith("traces") && name.indexOf(".")!=-1){
 					var attr = name.substr(name.indexOf(".")+1);
 					var index =name.substring(name.indexOf("[")+1,name.indexOf("]"));
 					
@@ -112,18 +112,15 @@ qx.Class.define("ae.chart.controller.Plotly",
 			},this);			
 			
 			model.addListener("addTrace", function(e){
-				//var skLayer = e.getData();
-				//this.getOlmap().addLayer(map.controller.Util.sk2ol_Layer(skLayer));
-				
+				Plotly.addTraces(this.getPlotlyDiv(),ae.chart.util.Serializer.toNativeObject(e.getData()));				
 			},this);
 			
 			model.addListener("removeTrace", function(e){
-
-				
+				Plotly.deleteTraces(this.getPlotlyDiv(),e.getData());
 			},this);
 			
-			model.addListener("raiseTrace", function(e){
-				//this.getOlmap().raiseLayer(this.getOlmap().getLayer(e.getData().layer.getId()),-e.getData().delta);
+			model.addListener("moveTrace", function(e){
+				Plotly.moveTraces(this.getPlotlyDiv(),e.getData().currentIndex,e.getData().newIndex);
 			},this);
 		}
 	}

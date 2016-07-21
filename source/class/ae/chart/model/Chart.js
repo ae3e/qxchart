@@ -24,7 +24,8 @@ qx.Class.define("ae.chart.model.Chart", {
 			check : "qx.data.Array",
 			nullable : false,
 			apply : "_apply",
-			init : new qx.data.Array()
+			deferredInit : true
+			//init : new qx.data.Array()
 		},
 		
 		/**
@@ -39,7 +40,7 @@ qx.Class.define("ae.chart.model.Chart", {
 
 	construct : function() {
 		this.base(arguments);
-
+		this.initTraces(new qx.data.Array());
 	},
 
 	events : {
@@ -52,9 +53,9 @@ qx.Class.define("ae.chart.model.Chart", {
 	     */
 	    "removeTrace" : "qx.event.type.Data",
 	    /**
-	     * Fired when trace is raised
+	     * Fired when trace is moved
 	     */
-	    "raiseTrace" : "qx.event.type.Data"
+	    "moveTrace" : "qx.event.type.Data"
 	},
 	
 	members : {
@@ -63,7 +64,7 @@ qx.Class.define("ae.chart.model.Chart", {
 		 * @param trace {ae.chart.model.Trace} Trace
 		 */
 		addTrace : function(trace){
-			this.getTraces().insertBefore(this.getTraces().getItem(0),trace);
+			this.getTraces().push(trace);
 			this.fireDataEvent("addTrace",trace);
 		},
 		
@@ -72,8 +73,9 @@ qx.Class.define("ae.chart.model.Chart", {
 		 * @param trace {ae.chart.model.Trace} Trace
 		 */
 		removeTrace : function(trace){
+			var index = this.getTraces().indexOf(trace);
 			this.getTraces().remove(trace);
-			this.fireDataEvent("removeTrace",trace);
+			this.fireDataEvent("removeTrace",index);
 		},
 
 		/**
@@ -87,20 +89,19 @@ qx.Class.define("ae.chart.model.Chart", {
         },
 
         /**
-		 * Change the index of the given trace by delta.
-		 * If delta is positive, the trace is moved up.
-		 * If delta is negative, the trace is moved down.
+		 * Change the index of the given trace to the new index.
 		 * @param trace {ae.chart.model.Trace} Trace
-		 * @param delta {Integer} Delta
+		 * @param newIndex {Integer} New index
 		 */
-		raiseLayer : function(trace,delta){
-			var pos = this.getTraces().indexOf(trace);
-			this.getTraces().removeAt(pos);
-			this.getTraces().insertAt(pos+delta,trace);
+		moveTrace : function(trace,newIndex){
+			var currentIndex = this.getTraces().indexOf(trace);
+			this.getTraces().removeAt(currentIndex);
+			this.getTraces().insertAt(newIndex,trace);
 			var e = new Object();
 			e.trace = trace;
-			e.delta = delta;
-			this.fireDataEvent("raiseTrace",e);
+			e.currentIndex = currentIndex;
+			e.newIndex = newIndex;
+			this.fireDataEvent("moveTrace",e);
 		},
 		
 		_apply : function(value, old, name){

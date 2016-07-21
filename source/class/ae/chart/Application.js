@@ -80,11 +80,17 @@ qx.Class.define("ae.chart.Application",
       });
       
       //Add traces to chart's model
-      var traces = new qx.data.Array();
+      //Method1 - Can't be used once the model is passed to the widget (addTrace event is not triggered)
+      /*var traces = new qx.data.Array();
       traces.push(scatter1);
       traces.push(scatter2);
       traces.push(scatter3);
-      chartModel.setTraces(traces);
+      chartModel.setTraces(traces);*/
+      //Method2 - Can't be used once the model is passed to the widget (addTrace event is not triggered)
+      chartModel.getTraces().push(scatter1);
+      //Method3 - Prefered
+      chartModel.addTrace(scatter2);
+      chartModel.addTrace(scatter3);
       
       //First axis
       var axis = new ae.chart.model.axis.Axis();
@@ -154,11 +160,34 @@ qx.Class.define("ae.chart.Application",
           axis.setRange([0,50]);
       });
       
+      var button5 = new qx.ui.form.Button("Add trace");
+      button5.addListener("execute",function(e){
+    	  this.scatter = new ae.chart.model.trace.Scatter();
+    	  this.scatter.setX([1, 2, 3, 4]);
+    	  this.scatter.setY([20, 18, 22, 10]);
+    	  this.scatter.setMode("lines");
+          chartModel.addTrace(this.scatter);
+          //chartModel.moveTrace(this.scatter,0);
+          button5.setEnabled(false);
+          button6.setEnabled(true);
+      },this);
+      
+      var button6 = new qx.ui.form.Button("Remove trace").set({
+    	  enabled:false
+      });
+      button6.addListener("execute",function(e){
+    	  chartModel.removeTrace(this.scatter);
+    	  button5.setEnabled(true);
+    	  button6.setEnabled(false);
+      },this);
+      
       buttons.add(new qx.ui.core.Spacer(), {flex: 1});
       buttons.add(button1);
       buttons.add(button2);
       buttons.add(button3);
       buttons.add(button4);
+      buttons.add(button5);
+      buttons.add(button6);
       buttons.add(new qx.ui.core.Spacer(), {flex: 1});
       con.add(buttons);
       

@@ -46,9 +46,7 @@ scatter.setY([10, 15, 13, 17]);
 scatter.setMode("markers");
 
 //Add trace to chart's model
-var traces = new qx.data.Array();
-traces.push(scatter);
-chartModel.setTraces(traces);
+chartModel.addTrace(scatter);
 ```
 
 Create a chart widget and pass the model as argument :
