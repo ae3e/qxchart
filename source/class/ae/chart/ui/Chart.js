@@ -1,5 +1,7 @@
-﻿/**
+﻿﻿/**
  * Chart widget
+ * 
+ * @ignore(Plotly.*)
  */
 qx.Class.define("ae.chart.ui.Chart", {
 	extend : qx.ui.core.Widget,

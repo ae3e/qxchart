@@ -59,10 +59,11 @@ qx.Class.define("ae.chart.Application",
       chartModel.setLayout(chartLayout);
 
       //First trace
-      var scatter1 = new ae.chart.model.trace.Scatter();
+      var scatter1 = new ae.chart.model.trace.Bar();
       scatter1.setX([1, 2, 3, 4]);
       scatter1.setY([10, 15, 13, 17]);
-      scatter1.setMode("markers");
+      scatter1.setOrientation("h");
+      //scatter1.setMode("markers");
       
       //Second trace
       var scatter2 = new ae.chart.model.trace.Scatter().set({
