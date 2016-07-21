@@ -119,7 +119,7 @@ qx.Class.define("ae.chart.Application",
       con.add(chart,{flex:1});
       
       var buttons = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
-    	  margin: [0, 300, 30, 300]
+    	  margin: [0, 0, 30, 0]
       });
       var button1 = new qx.ui.form.Button("Change layout");
       button1.addListener("execute",function(e){

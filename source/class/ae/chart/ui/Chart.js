@@ -22,6 +22,12 @@ qx.Class.define("ae.chart.ui.Chart", {
 
 		this.addListenerOnce("appear", function(e){
 			var controller = new ae.chart.controller.Plotly(model,this.getPlotlyDiv());
+			
+			this.addListener("resize", function (e) {
+	        	if(this.getPlotlyDiv()){
+	        		Plotly.Plots.resize(this.getPlotlyDiv());
+	        	}
+	        },this);
 		},this);
 	},
 
