@@ -57,10 +57,17 @@ var chartWidget = new ae.chart.ui.Chart(chartModel);
 
 ## 3. Examples
 
-Here are some examples :
-* [Basic chart](https://bl.ocks.org/adeliz/c4102cc7cb339acccfcfce4ae8007039)
+Charts :
+* [Scatter chart](https://bl.ocks.org/adeliz/25ed0f2e700d87c6857a81b24ae19108)
+* [Line chart](https://bl.ocks.org/adeliz/147b4941c1461a9c1cd9e222c142592a)
+* [Bubble chart](https://bl.ocks.org/adeliz/32e240fcb71d58ddbddb9de4d64ab393)
+* [Area chart](https://bl.ocks.org/adeliz/184fbde7927bba962565e9e9f6f5edd1)
+
+Others :
+* [Scatter chart with data labels](https://bl.ocks.org/adeliz/72acf143dec4b38a7a41fa55dea33391)
+* [Multiple axes](https://bl.ocks.org/adeliz/c4102cc7cb339acccfcfce4ae8007039)
 
 
 ## 4. Documentation
 
-The full API documentation is available at https://rawgit.com/adeliz/qxchart/master/api/index.html#ae
+The full API documentation is hosted at https://rawgit.com/adeliz/qxchart/master/api/index.html#ae
