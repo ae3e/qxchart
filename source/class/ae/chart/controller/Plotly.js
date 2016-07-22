@@ -1,5 +1,5 @@
 ﻿/**
- * Controller links map's model and Plotly chart
+ * Controller links charts's model and Plotly chart
  * 
  * @ignore(Plotly.*)
  */
@@ -19,9 +19,9 @@ qx.Class.define("ae.chart.controller.Plotly",
 			init : null
 		},
 		/**
-		 * Plotly div
+		 * Chart widget
 		 */
-		plotlyDiv :{
+		target :{
 			//check : "",
 			nullable : true,
 			init : null
@@ -32,13 +32,18 @@ qx.Class.define("ae.chart.controller.Plotly",
 	 * Creates an instance of the Plotly's controller
 	 * 
 	 * @param model {ae.chart.model.Chart} chart's model
-	 * @param widget {object} Chart widget
+	 * @param target {object} Chart widget
 	 * 
 	 */
-	construct : function(model, widget){
+	construct : function(model, target){
 
-		this._widget = widget;
-		this.setPlotlyDiv(widget.getPlotlyDiv());
+		target.addListener("resize", function (e) {
+        	if(target.getPlotlyDiv()){
+        		Plotly.Plots.resize(target.getPlotlyDiv());
+        	}
+        },target);
+		
+		this.setTarget(target);
 		this.setModel(model);
 		this._initModel(model);
 		
@@ -76,7 +81,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 			}
 			
 			var data = ae.chart.util.Serializer.toNativeObject(model.getTraces());
-			Plotly.plot(this.getPlotlyDiv(),data,layout,model.getConfig());
+			Plotly.plot(this.getTarget().getPlotlyDiv(),data,layout,model.getConfig());
 			
 			//Bind model to the chart by adding listeners to the model			
 			model.addListener("changeBubble", function(e){
@@ -100,7 +105,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 					}
 					obj[attr]= ae.chart.util.Serializer.toNativeObject(value);
 					
-					Plotly.relayout(this.getPlotlyDiv(),obj);
+					Plotly.relayout(this.getTarget().getPlotlyDiv(),obj);
 				}
 				
 				if(name.startsWith("traces") && name.indexOf(".")!=-1){
@@ -109,20 +114,20 @@ qx.Class.define("ae.chart.controller.Plotly",
 					
 					obj[attr]=ae.chart.util.Serializer.toNativeObject(value);
 					
-					Plotly.restyle(this.getPlotlyDiv(),obj,index);
+					Plotly.restyle(this.getTarget().getPlotlyDiv(),obj,index);
 				}
 			},this);			
 			
 			model.addListener("addTrace", function(e){
-				Plotly.addTraces(this.getPlotlyDiv(),ae.chart.util.Serializer.toNativeObject(e.getData()));				
+				Plotly.addTraces(this.getTarget().getPlotlyDiv(),ae.chart.util.Serializer.toNativeObject(e.getData()));				
 			},this);
 			
 			model.addListener("removeTrace", function(e){
-				Plotly.deleteTraces(this.getPlotlyDiv(),e.getData());
+				Plotly.deleteTraces(this.getTarget().getPlotlyDiv(),e.getData());
 			},this);
 			
 			model.addListener("moveTrace", function(e){
-				Plotly.moveTraces(this.getPlotlyDiv(),e.getData().currentIndex,e.getData().newIndex);
+				Plotly.moveTraces(this.getTarget().getPlotlyDiv(),e.getData().currentIndex,e.getData().newIndex);
 			},this);
 			
 			/**
@@ -133,22 +138,22 @@ qx.Class.define("ae.chart.controller.Plotly",
 			 * plotly_selected //lasso selection
 			 * plotly_relayout (event,eventdata)//
 			 */
-			var widg = this._widget;
-			this.getPlotlyDiv().on('plotly_click', function(data){
-				widg.fireEvent("click", qx.event.type.Mouse, [{}, widg, widg, false, true]); 
-				widg.fireDataEvent("clickTrace", data);
+			var widget = this.getTarget();
+			widget.getPlotlyDiv().on('plotly_click', function(data){
+				widget.fireEvent("click", qx.event.type.Mouse, [{}, widget, widget, false, true]); 
+				widget.fireDataEvent("clickTrace", data);
 			});
-			this.getPlotlyDiv().on('plotly_hover', function(data){
-				widg.fireDataEvent("overTrace", data);
+			widget.getPlotlyDiv().on('plotly_hover', function(data){
+				widget.fireDataEvent("overTrace", data);
 			});
-			this.getPlotlyDiv().on('plotly_unhover', function(data){
-				widg.fireDataEvent("outTrace", data);
+			widget.getPlotlyDiv().on('plotly_unhover', function(data){
+				widget.fireDataEvent("outTrace", data);
 			});
-			this.getPlotlyDiv().on('plotly_selected', function(data){
-				widg.fireDataEvent("changeSelection", data);
+			widget.getPlotlyDiv().on('plotly_selected', function(data){
+				widget.fireDataEvent("changeSelection", data);
 			});
-			this.getPlotlyDiv().on('plotly_relayout', function(data){
-				widg.fireDataEvent("changeLayout", data);
+			widget.getPlotlyDiv().on('plotly_relayout', function(data){
+				widget.fireDataEvent("changeLayout", data);
 			});
 		}
 	}

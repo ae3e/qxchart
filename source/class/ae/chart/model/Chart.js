@@ -33,7 +33,7 @@ qx.Class.define("ae.chart.model.Chart", {
 		 */
 		config : {
 			check : "Object",
-			init : {displayModeBar: true}
+			init : {displayModeBar: false}
 		}
 	},
 
