@@ -116,8 +116,22 @@ qx.Class.define("ae.chart.Application",
       //Add chart to qooxdoo app
       var doc = this.getRoot();
       doc.set({backgroundColor:"#FFF"});
+      
+      var tabView = new qx.ui.tabview.TabView();
+      tabView.setWidth(500);
+
+      var page1 = new qx.ui.tabview.Page("Pie");
+      page1.setLayout(new qx.ui.layout.VBox());
+      page1.add(new ae.chart.test.PieTest(),{flex:1});
+      tabView.add(page1);
+      
       var con = new qx.ui.container.Composite(new qx.ui.layout.VBox());
       con.add(chart,{flex:1});
+      
+      var page2 = new qx.ui.tabview.Page("Test");
+      page2.setLayout(new qx.ui.layout.VBox());
+      page2.add(con,{flex:1});
+      tabView.add(page2);
       
       var buttons = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
     	  margin: [0, 0, 30, 0]
@@ -192,7 +206,7 @@ qx.Class.define("ae.chart.Application",
       buttons.add(new qx.ui.core.Spacer(), {flex: 1});
       con.add(buttons);
       
-      doc.add(con, {edge: 0});
+      doc.add(tabView, {edge: 0});
 
     }
   }
