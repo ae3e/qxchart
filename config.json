@@ -85,7 +85,7 @@
 		"extend": [ "cache" ],
 
 		//"include": ["ae.*"],
-		"exclude": ["ae.chart.test.*"],
+		"exclude": ["ae.chart.test.*","ae.chart.Application"],
 		
 		"add-script" : [
 			{"uri": "https://cdn.plot.ly/plotly-1.14.2.min.js"}
