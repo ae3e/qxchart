@@ -112,7 +112,10 @@ qx.Class.define("ae.chart.Application",
       //Create chart widget with model
       var chart = new ae.chart.ui.Chart(chartModel);
       
-     
+      chart.addListener("changeLayout",function(e){
+			console.log(e.getData());
+		},chart);
+      
       //Add chart to qooxdoo app
       var doc = this.getRoot();
       doc.set({backgroundColor:"#FFF"});
@@ -136,7 +139,7 @@ qx.Class.define("ae.chart.Application",
       var page3 = new qx.ui.tabview.Page("Test");
       page3.setLayout(new qx.ui.layout.VBox());
       page3.add(con,{flex:1});
-      //tabView.add(page3);
+      tabView.add(page3);
       
       var buttons = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
     	  margin: [0, 0, 30, 0]

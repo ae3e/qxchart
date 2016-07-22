@@ -22,6 +22,12 @@ qx.Class.define("ae.chart.test.PieTest", {
 		chartModel.addTrace(pie);
 
 		var chart = new ae.chart.ui.Chart(chartModel);
+		
+		chart.addListener("click",function(e){
+			console.log('click');
+		});
+		
+		
 		return chart;
 
 	}

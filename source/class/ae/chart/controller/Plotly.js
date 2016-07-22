@@ -32,19 +32,21 @@ qx.Class.define("ae.chart.controller.Plotly",
 	 * Creates an instance of the Plotly's controller
 	 * 
 	 * @param model {ae.chart.model.Chart} chart's model
-	 * @param plotdiv {object} Plotly div
+	 * @param widget {object} Chart widget
 	 * 
 	 */
-	construct : function(model, plotdiv){
+	construct : function(model, widget){
 
-		this.setPlotlyDiv(plotdiv);
+		this._widget = widget;
+		this.setPlotlyDiv(widget.getPlotlyDiv());
 		this.setModel(model);
+		this._initModel(model);
 		
 	},
 	
 	members : {
 		_applyModel : function(value){
-			this._initModel(value);
+			//this._initModel(value);
 		},
 		
 		/**
@@ -122,6 +124,32 @@ qx.Class.define("ae.chart.controller.Plotly",
 			model.addListener("moveTrace", function(e){
 				Plotly.moveTraces(this.getPlotlyDiv(),e.getData().currentIndex,e.getData().newIndex);
 			},this);
+			
+			/**
+			 * plotly_click (data)
+			 * plotly_hover (data)
+			 * plotly_unhover (data)
+			 * plotly_beforehover ()
+			 * plotly_selected //lasso selection
+			 * plotly_relayout (event,eventdata)//
+			 */
+			var widg = this._widget;
+			this.getPlotlyDiv().on('plotly_click', function(data){
+				widg.fireEvent("click", qx.event.type.Mouse, [{}, widg, widg, false, true]); 
+				widg.fireDataEvent("clickTrace", data);
+			});
+			this.getPlotlyDiv().on('plotly_hover', function(data){
+				widg.fireDataEvent("overTrace", data);
+			});
+			this.getPlotlyDiv().on('plotly_unhover', function(data){
+				widg.fireDataEvent("outTrace", data);
+			});
+			this.getPlotlyDiv().on('plotly_selected', function(data){
+				widg.fireDataEvent("changeSelection", data);
+			});
+			this.getPlotlyDiv().on('plotly_relayout', function(data){
+				widg.fireDataEvent("changeLayout", data);
+			});
 		}
 	}
 });

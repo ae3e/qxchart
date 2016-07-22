@@ -19,10 +19,30 @@ qx.Class.define("ae.chart.test.ScatterTest", {
 			y : [ 16, 5, 11, 9 ],
 			mode : 'markers'
 		});
+		
+		var bar = new ae.chart.model.trace.Bar().set({
+			x : [ 2, 3, 4, 5 ],
+			y : [ 16, 5, 11, 9 ]
+		});
 
 		chartModel.addTrace(scatter);
+		chartModel.addTrace(bar);
 
-		var chart = new ae.chart.ui.Chart(chartModel);
+		var chart = new ae.chart.ui.Chart(chartModel);		
+		
+		chart.addListener("clickTrace",function(e){
+			console.log(e.getData());
+		},chart);
+		/*chart.addListener("overTrace",function(e){
+			console.log(e.getData());
+		},chart);
+		chart.addListener("outTrace",function(e){
+			console.log(e.getData());
+		},chart);*/
+		
+		chart.addListener("changeSelection",function(e){
+			console.log(e.getData());
+		},chart);
 		return chart;
 
 	}
