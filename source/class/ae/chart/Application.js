@@ -125,13 +125,18 @@ qx.Class.define("ae.chart.Application",
       page1.add(new ae.chart.test.PieTest(),{flex:1});
       tabView.add(page1);
       
+      var page2 = new qx.ui.tabview.Page("Scatter");
+      page2.setLayout(new qx.ui.layout.VBox());
+      page2.add(new ae.chart.test.ScatterTest(),{flex:1});
+      tabView.add(page2);
+      
       var con = new qx.ui.container.Composite(new qx.ui.layout.VBox());
       con.add(chart,{flex:1});
       
-      var page2 = new qx.ui.tabview.Page("Test");
-      page2.setLayout(new qx.ui.layout.VBox());
-      page2.add(con,{flex:1});
-      tabView.add(page2);
+      var page3 = new qx.ui.tabview.Page("Test");
+      page3.setLayout(new qx.ui.layout.VBox());
+      page3.add(con,{flex:1});
+      //tabView.add(page3);
       
       var buttons = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
     	  margin: [0, 0, 30, 0]

@@ -1,4 +1,4 @@
-qx.Class.define("ae.chart.test.PieTest", {
+qx.Class.define("ae.chart.test.ScatterTest", {
 	extend : qx.ui.core.Widget,
 
 	construct : function() {
@@ -14,12 +14,13 @@ qx.Class.define("ae.chart.test.PieTest", {
 		chartModel.setLayout(chartLayout);
 
 		//First trace
-		var pie = new ae.chart.model.trace.Pie().set({
-			values : [ 19, 26, 55 ],
-			labels : [ 'Residential', 'Non-Residential', 'Utility' ]
+		var scatter = new ae.chart.model.trace.Scatter().set({
+			x : [ 2, 3, 4, 5 ],
+			y : [ 16, 5, 11, 9 ],
+			mode : 'markers'
 		});
 
-		chartModel.addTrace(pie);
+		chartModel.addTrace(scatter);
 
 		var chart = new ae.chart.ui.Chart(chartModel);
 		return chart;
