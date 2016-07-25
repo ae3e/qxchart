@@ -14,6 +14,7 @@ qx.Class.define("ae.chart.model.trace.Bar", {
 		orientation : {
 			check : ["v","h"],
 			init : null,
+			event : "changeOrientation",
 			apply : "_apply"
 		}
 	},

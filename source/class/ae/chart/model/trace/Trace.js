@@ -22,6 +22,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		hoverinfo : {
 			check : "String",
 			init : "all",
+			event : "changeHoverinfo",
 			apply : "_apply"
 		},
 		
@@ -31,6 +32,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		legendgroup : {
 			check : "String",
 			init : null,
+			event : "changeLegendgroup",
 			apply : "_apply"
 		},
 		
@@ -48,6 +50,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		name : {
 			check : "String",
 			init : null,
+			event : "changeName",
 			apply : "_apply"
 		},
 		
@@ -57,6 +60,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		opacity : {
 			check : "Number",
 			init : 1,
+			event : "ChangeOpacity",
 			apply : "_apply"
 		},
 		
@@ -66,6 +70,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		showlegend : {
 			check : "Boolean",
 			init : true,
+			event : "changeShowlegend",
 			apply : "_apply"
 		},
 		
@@ -74,6 +79,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		 */
 		text : {
 			init : null,
+			event : "changeText",
 			apply : "_apply"
 		},
 		
@@ -83,6 +89,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		textfont : {
 			check : "qx.bom.Font",
 			nullable : true,
+			event : "changeTextfont",
 			apply : "_apply",
 			init : null
 		},
@@ -93,6 +100,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		textposition : {
 			check : "String",
 			init : null,
+			event : "changeTextposition",
 			apply : "_apply"
 		},
 		
@@ -102,6 +110,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		visible : {
 			check : [true,false,"legendonly"],
 			init:true,
+			event : "changeVisible",
 			apply : "_apply"
 		}
 	},

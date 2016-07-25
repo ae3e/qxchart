@@ -14,6 +14,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		connectgaps : {
 			check : "Boolean",
 			init : false,
+			event : "changeConnectgaps",
 			apply : "_apply"
 		},
 		
@@ -23,6 +24,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		dx : {
 			check : "Number",
 			init : 1,
+			event : "changeDx",
 			apply : "_apply"
 		},
 		
@@ -32,6 +34,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		dy : {
 			check : "Number",
 			init : 1,
+			event : "Dy",
 			apply : "_apply"
 		},
 		
@@ -53,6 +56,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		fill : {
 			check : ["none", "tozeroy", "tozerox", "tonexty", "tonextx"],
 			init : "none",
+			event : "changeFill",
 			apply : "_apply"
 		},
 		
@@ -62,6 +66,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		fillcolor : {
 			check : "String",
 			init : null,
+			event : "changeFillcolor",
 			apply : "_apply"
 		},
 		
@@ -79,6 +84,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		mode : {
 			check : "String",
 			init : null,
+			event : "changeMode",
 			apply : "_apply"
 		},
 		
@@ -89,6 +95,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 			check : "Array",
 			//nullable : true,
 			//init : null,
+			event : "changeR",
 			apply : "_apply"
 		},
 		
@@ -99,6 +106,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 			check : "Array",
 			//nullable : true,
 			//init : null,
+			event : "changeT",
 			apply : "_apply"
 		},
 		
@@ -107,6 +115,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		 */
 		x0 : {
 			init:0,
+			event : "changeX0",
 			apply : "_apply"
 		},
 		
@@ -117,6 +126,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 			check : "Array",
 			nullable : true,
 			init : null,
+			event : "changeX",
 			apply : "_apply"
 		},
 		
@@ -126,6 +136,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		xaxis : {
 			check : "String",
 			init : "x",
+			event : "changeXaxis",
 			apply : "_apply"
 		},
 		
@@ -134,6 +145,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		 */
 		y0 : {
 			init:0,
+			event : "changeY0",
 			apply : "_apply"
 		},
 		
@@ -144,6 +156,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 			check : "Array",
 			nullable : true,
 			init : null,
+			event : "changeY",
 			apply : "_apply"
 		},
 		
@@ -153,6 +166,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		yaxis : {
 			check : "String",
 			init : "y",
+			event : "Yaxis",
 			apply : "_apply"
 		}
 	},

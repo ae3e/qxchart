@@ -14,6 +14,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		direction : {
 			check : ["clockwise","counterclockwise"],
 			init : null,
+			event : "changeDirection",
 			apply : "_apply"
 		},
 		
@@ -23,6 +24,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		dlabel : {
 			check : "Number",
 			init : null,
+			event : "changeDlabel",
 			apply : "_apply"
 		},
 
@@ -32,6 +34,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		domain : {
 			check : "Object",
 			init : null,
+			event : "changeDomain",
 			apply : "_apply"
 		},
 
@@ -41,6 +44,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		hole : {
 			check : "Number",
 			init : null,
+			event : "changeHole",
 			apply : "_apply"
 		},
 
@@ -50,6 +54,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		insidetextfont : {
 			check : "qx.bom.Font",
 			init : null,
+			event : "changeInsidetextfont",
 			apply : "_apply"
 		},
 
@@ -59,6 +64,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		label0 : {
 			check : "Number",
 			init : null,
+			event : "changeLabel0",
 			apply : "_apply"
 		},
 
@@ -68,6 +74,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		labels : {
 			check : "Array",
 			init : null,
+			event : "changeLabels",
 			apply : "_apply"
 		},
 		
@@ -77,6 +84,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		outsidetextfont : {
 			check : "qx.bom.Font",
 			init : null,
+			event : "changeOutsidetextfont",
 			apply : "_apply"
 		},
 		
@@ -85,6 +93,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		 */
 		pull : {
 			init : null,
+			event : "changePull",
 			apply : "_apply"
 		},
 		
@@ -94,6 +103,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		rotation : {
 			check : "Number",
 			init : null,
+			event : "changeRotation",
 			apply : "_apply"
 		},
 		
@@ -103,6 +113,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		scalegroup : {
 			check : "String",
 			init : null,
+			event : "changeScalegroup",
 			apply : "_apply"
 		},
 		
@@ -112,6 +123,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		sort : {
 			check : "Boolean",
 			init : null,
+			event : "changeSort",
 			apply : "_apply"
 		},
 		
@@ -121,6 +133,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		textinfo : {
 			check : ["none","label","text","value","percent"],
 			init : null,
+			event : "changeTextinfo",
 			apply : "_apply"
 		},
 		
@@ -130,6 +143,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		values : {
 			check : "Array",
 			init : null,
+			event : "changeValues",
 			apply : "_apply"
 		}
 	},
