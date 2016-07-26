@@ -94,7 +94,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		r : {
 			check : "Array",
 			//nullable : true,
-			//init : null,
+			init : null,
 			event : "changeR",
 			apply : "_apply"
 		},
@@ -105,7 +105,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		t : {
 			check : "Array",
 			//nullable : true,
-			//init : null,
+			init : null,
 			event : "changeT",
 			apply : "_apply"
 		},

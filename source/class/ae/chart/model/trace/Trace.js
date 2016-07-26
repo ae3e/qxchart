@@ -1,4 +1,4 @@
-﻿/**
+﻿﻿/**
  * Trace
  */
 qx.Class.define("ae.chart.model.trace.Trace", {
@@ -60,7 +60,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		opacity : {
 			check : "Number",
 			init : 1,
-			event : "ChangeOpacity",
+			event : "changeOpacity",
 			apply : "_apply"
 		},
 		
@@ -108,7 +108,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		 * Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
 		 */
 		visible : {
-			check : [true,false,"legendonly"],
+			check : "Boolean",//[true,false,"legendonly"],
 			init:true,
 			event : "changeVisible",
 			apply : "_apply"

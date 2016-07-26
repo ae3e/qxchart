@@ -110,11 +110,16 @@ qx.Class.define("ae.chart.controller.Plotly",
 				
 				if(name.startsWith("traces") && name.indexOf(".")!=-1){
 					var attr = name.substr(name.indexOf(".")+1);
-					var index =name.substring(name.indexOf("[")+1,name.indexOf("]"));
+					var index =parseInt(name.substring(name.indexOf("[")+1,name.indexOf("]")));
 					
 					obj[attr]=ae.chart.util.Serializer.toNativeObject(value);
 					
-					Plotly.restyle(this.getTarget().getPlotlyDiv(),obj,index);
+					//encapsulate data in array befaore to restyle
+					for(var prop in obj){
+						obj[prop] = [obj[prop]];
+					}
+
+					Plotly.restyle(this.getTarget().getPlotlyDiv(),obj,[index]);
 				}
 			},this);			
 			
