@@ -12,6 +12,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		anchor : {
 			check : "String",
+			event : "changeAnchor",
 			apply : "_apply",
 			init : null
 		},
@@ -21,6 +22,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		autorange : {
 			check : [true,false,"reversed"],
+			event : "changeAutorange",
 			apply : "_apply",
 			init : null
 		},
@@ -30,6 +32,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		categoryarray : {
 			apply : "_apply",
+			event : "changeCategoryarray",
 			init : true
 		},
 		
@@ -38,6 +41,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		categoryorder : {
 			check : ["trace","category ascending","category descending","array"],
+			event : "changeCategoryorder",
 			apply : "_apply",
 			init : "trace"
 		},
@@ -47,6 +51,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		color : {
 			check : "String",
+			event : "changeColor",
 			apply : "_apply",
 			init : null
 		},
@@ -56,6 +61,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		domain : {
 			check : "Array",
+			event : "changeDomain",
 			apply : "_apply",
 			init : null
 		},
@@ -65,6 +71,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		dtick : {
 			apply : "_apply",
+			event : "changeDtick",
 			init : null
 		},
 		
@@ -73,6 +80,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		exponentformat : {
 			check : ["none","e","E","power","SI","B"],
+			event : "changeExponentformat",
 			apply : "_apply",
 			init : null
 		},
@@ -82,6 +90,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		fixedrange : {
 			check : "Boolean",
+			event : "changeFixedrange",
 			apply : "_apply",
 			init : null
 		},
@@ -91,6 +100,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		gridcolor : {
 			check : "String",
+			event : "changeGridcolor",
 			apply : "_apply",
 			init : null
 		},
@@ -100,6 +110,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		gridwidth : {
 			check : "Number",
+			event : "changeGridwidth",
 			apply : "_apply",
 			init : null
 		},
@@ -109,6 +120,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		hoverformat : {
 			apply : "_apply",
+			event : "changeHoverformat",
 			init : null
 		},
 		
@@ -117,6 +129,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		linecolor : {
 			check : "String",
+			event : "changeLinecolor",
 			apply : "_apply",
 			init : null
 		},
@@ -126,6 +139,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		linewidth : {
 			check : "Number",
+			event : "changeLinewidth",
 			apply : "_apply",
 			init : null
 		},
@@ -135,6 +149,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		mirror : {
 			check : [true,false,"ticks","all","allticks"],
+			event : "changeMirror",
 			apply : "_apply",
 			init : null
 		},
@@ -144,6 +159,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		nticks : {
 			check : "Integer",
+			event : "changeNticks",
 			apply : "_apply",
 			init : null
 		},
@@ -153,6 +169,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		overlaying : {
 			check : "String",
+			event : "changeOverlaying",
 			apply : "_apply",
 			init : null
 		},
@@ -162,6 +179,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		position : {
 			check : "Integer",
+			event : "changePosition",
 			apply : "_apply",
 			init : null
 		},
@@ -171,6 +189,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		range : {
 			check : "Array",
+			event : "changeRange",
 			apply : "_apply",
 			init : null
 		},
@@ -180,6 +199,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		rangemode : {
 			check : ["normal","tozero","nonnegative"],
+			event : "changeRangemode",
 			apply : "_apply",
 			init : null
 		},
@@ -199,6 +219,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		showexponent : {
 			check : ["all","first","last","none"],
+			event : "changeShowexponent",
 			apply : "_apply",
 			init : null
 		},
@@ -208,6 +229,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		showgrid : {
 			check : "Boolean",
+			event : "changeShowgrid",
 			apply : "_apply",
 			init : null
 		},
@@ -217,6 +239,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		showline : {
 			check : "Boolean",
+			event : "changeShowline",
 			apply : "_apply",
 			init : null
 		},
@@ -226,6 +249,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		showticklabels : {
 			check : "Boolean",
+			event : "changeShowticklabels",
 			apply : "_apply",
 			init : null
 		},
@@ -235,6 +259,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		showtickprefix : {
 			check : ["all","first","last","none"],
+			event : "changeShowtickprefix",
 			apply : "_apply",
 			init : null
 		},
@@ -244,6 +269,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		showticksuffix : {
 			check : ["all","first","last","none"],
+			event : "changeShowticksuffix",
 			apply : "_apply",
 			init : null
 		},
@@ -253,6 +279,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		side : {
 			check : ["top","bottom","left","right"],
+			event : "changeSide",
 			apply : "_apply",
 			init : null
 		},
@@ -262,6 +289,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tick0 : {
 			check : "Number",
+			event : "changeTick0",
 			apply : "_apply",
 			init : null
 		},
@@ -271,6 +299,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tickangle : {
 			check : "Number",
+			event : "changeTickangle",
 			apply : "_apply",
 			init : null
 		},
@@ -280,6 +309,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tickcolor : {
 			check : "String",
+			event : "changeTickcolor",
 			apply : "_apply",
 			init : null
 		},
@@ -289,6 +319,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tickfont : {
 			check : "ae.chart.model.Font",
+			event : "changeTickfont",
 			apply : "_apply",
 			init : null
 		},
@@ -298,6 +329,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tickformat : {
 			check : "String",
+			event : "changeTickformat",
 			apply : "_apply",
 			init : null
 		},
@@ -307,6 +339,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		ticklen : {
 			check : "Number",
+			event : "changeTicklen",
 			apply : "_apply",
 			init : null
 		},
@@ -316,6 +349,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tickmode : {
 			check : ["auto","linear","array"],
+			event : "changeTickmode",
 			apply : "_apply",
 			init : null
 		},
@@ -325,6 +359,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tickprefix : {
 			check : "String",
+			event : "changeTickprefix",
 			apply : "_apply",
 			init : null
 		},
@@ -334,6 +369,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tick : {
 			check : ["inside","outside",""],
+			event : "changeTick",
 			apply : "_apply",
 			init : null
 		},
@@ -343,6 +379,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		ticksuffix : {
 			check : "String",
+			event : "changeTicksuffix",
 			apply : "_apply",
 			init : null
 		},
@@ -352,6 +389,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		ticktext : {
 			check : "Array",
+			event : "changeTicktext",
 			apply : "_apply",
 			init : null
 		},
@@ -361,6 +399,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tickval : {
 			check : "Array",
+			event : "changeTickval",
 			apply : "_apply",
 			init : null
 		},
@@ -370,6 +409,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		tickwidth : {
 			check : "Number",
+			event : "changeTickwidth",
 			apply : "_apply",
 			init : null
 		},
@@ -379,6 +419,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		title : {
 			check : "String",
+			event : "changeTitle",
 			apply : "_apply",
 			init : null
 		},
@@ -388,6 +429,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		titlefont : {
 			check : "ae.chart.model.Font",
+			event : "changeTitlefont",
 			apply : "_apply",
 			init : null
 		},
@@ -397,6 +439,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		type : {
 			check : ["-","linear","log","date","category"],
+			event : "changeType",
 			apply : "_apply",
 			init : null
 		},
@@ -406,6 +449,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		zeroline : {
 			check : "Boolean",
+			event : "changeZeroline",
 			apply : "_apply",
 			init : null
 		},
@@ -415,6 +459,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		zerolinecolor : {
 			check : "String",
+			event : "changeZerolinecolor",
 			apply : "_apply",
 			init : null
 		},
@@ -424,6 +469,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 */
 		zerolinewidth : {
 			check : "Number",
+			event : "changeZerolinewidth",
 			apply : "_apply",
 			init : null
 		}
