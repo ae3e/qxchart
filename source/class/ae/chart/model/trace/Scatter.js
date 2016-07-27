@@ -54,7 +54,7 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		 * Sets the area to fill with a solid color. Use with `fillcolor`.
 		 */
 		fill : {
-			check : ["none", "tozeroy", "tozerox", "tonexty", "tonextx"],
+			check : ["none", "tozeroy", "tozerox", "tonexty", "tonextx", "toself", "tonext"],
 			init : "none",
 			event : "changeFill",
 			apply : "_apply"

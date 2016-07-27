@@ -51,7 +51,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 * Sets the global font. Note that fonts used in traces and other layout components inherit from the global font.
 		 */
 		font : {
-			check : "qx.bom.Font",
+			check : "ae.chart.model.Font",
 			nullable : true,
 			apply : "_apply",
 			init : null
@@ -186,7 +186,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 * Sets the title font. Only family, color and size work
 		 */
 		titlefont : {
-			check : "qx.bom.Font",
+			check : "ae.chart.model.Font",
 			nullable : true,
 			apply : "_apply",
 			init : null

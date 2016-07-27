@@ -87,7 +87,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		 * Sets the text font.
 		 */
 		textfont : {
-			check : "qx.bom.Font",
+			check : "ae.chart.model.Font",
 			nullable : true,
 			event : "changeTextfont",
 			apply : "_apply",

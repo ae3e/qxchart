@@ -52,7 +52,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		 * Sets the font used for `textinfo` lying inside the pie.
 		 */
 		insidetextfont : {
-			check : "qx.bom.Font",
+			check : "ae.chart.model.Font",
 			init : null,
 			event : "changeInsidetextfont",
 			apply : "_apply"
@@ -82,7 +82,7 @@ qx.Class.define("ae.chart.model.trace.Pie", {
 		 * Sets the font used for `textinfo` lying outside the pie.
 		 */
 		outsidetextfont : {
-			check : "qx.bom.Font",
+			check : "ae.chart.model.Font",
 			init : null,
 			event : "changeOutsidetextfont",
 			apply : "_apply"

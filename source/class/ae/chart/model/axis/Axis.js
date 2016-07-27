@@ -288,7 +288,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 * Sets the tick font.
 		 */
 		tickfont : {
-			check : "qx.bom.Font",
+			check : "ae.chart.model.Font",
 			apply : "_apply",
 			init : null
 		},
@@ -387,7 +387,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 * Sets this axis' title font.
 		 */
 		titlefont : {
-			check : "qx.bom.Font",
+			check : "ae.chart.model.Font",
 			apply : "_apply",
 			init : null
 		},
