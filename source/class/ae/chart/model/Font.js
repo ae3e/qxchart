@@ -13,7 +13,9 @@ qx.Class.define("ae.chart.model.Font", {
 		family : {
 			check : "String",
 			event : "changeFamily",
-			apply : "_apply"
+			apply : "_apply",
+			nullable : true,
+			init : null
 		},
 		
 		/**
@@ -22,7 +24,9 @@ qx.Class.define("ae.chart.model.Font", {
 		size : {
 			check : "Number",
 			event : "changeSize",
-			apply : "_apply"
+			apply : "_apply",
+			nullable : true,
+			init : null
 		},
 		
 		/**
@@ -31,7 +35,9 @@ qx.Class.define("ae.chart.model.Font", {
 		color : {
 			check : "String",
 			event : "changeColor",
-			apply : "_apply"
+			apply : "_apply",
+			nullable : true,
+			init : null
 		}
 	},
 

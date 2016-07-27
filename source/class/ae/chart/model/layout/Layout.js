@@ -17,6 +17,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		annotations : {
 			check : "qx.data.Array",
 			apply : "_apply",
+			event : "changeAnnotations",
 			init : new qx.data.Array()
 		},
 		
@@ -25,8 +26,10 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		autosize : {
 			check : [true,false,"initial"],
+			event : "changeAutosize",
 			apply : "_apply",
-			init : true
+			nullable:true,
+			init : null
 		},
 		
 		/**
@@ -34,6 +37,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		direction : {
 			check : ["clockwise","counterclockwise"],
+			event : "changeDirection",
 			apply : "_apply",
 			init : null
 		},
@@ -43,6 +47,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		dragmode : {
 			check : ["zoom","pan","select","lasso","orbit","turntable"],
+			event : "changeDragmode",
 			apply : "_apply",
 			init : "zoom"
 		},
@@ -52,6 +57,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		font : {
 			check : "ae.chart.model.Font",
+			event : "changeFont",
 			nullable : true,
 			apply : "_apply",
 			init : null
@@ -68,7 +74,9 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		height : {
 			check : "Number",
+			event : "changeHeight",
 			apply : "_apply",
+			nullable: true,
 			init : null
 		},
 		
@@ -77,6 +85,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		hovermode : {
 			check : ["x","y","closest",false],
+			event : "changeHovermode",
 			apply : "_apply",
 			init : null
 		},
@@ -86,6 +95,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		images : {
 			check : "qx.data.Array",
+			event : "changeImages",
 			apply : "_apply",
 			init : new qx.data.Array()
 		},
@@ -105,6 +115,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		orientation : {
 			check : "Number",
+			event : "changeOrientation",
 			apply : "_apply",
 			init : null
 		},
@@ -114,6 +125,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		paper_bgcolor : {
 			check : "String",
+			event : "changePaper_bgcolor",
 			nullable : true,
 			apply : "_apply",
 			init : null
@@ -124,6 +136,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		plot_bgcolor : {
 			check : "String",
+			event : "changePlot_bgcolor",
 			nullable : true,
 			apply : "_apply",
 			init : null
@@ -144,6 +157,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		separators : {
 			check : "String",
+			event : "changeSeparators",
 			apply : "_apply",
 			init : null
 		},
@@ -153,6 +167,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		shapes : {
 			check : "qx.data.Array",
+			event : "changeShapes",
 			apply : "_apply",
 			init : new qx.data.Array()
 		},
@@ -161,8 +176,10 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 * Determines whether or not a legend is drawn.
 		 */
 		showlegend : {
-			check : "Booleany",
+			check : "Boolean",
+			event : "changeShowlegend",
 			apply : "_apply",
+			nullable : true,
 			init : null
 		},
 		
@@ -177,6 +194,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		title : {
 			check : "String",
+			event : "changeTitle",
 			nullable : true,
 			apply : "_apply",
 			init : null
@@ -187,6 +205,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		titlefont : {
 			check : "ae.chart.model.Font",
+			event : "changeTitlefont",
 			nullable : true,
 			apply : "_apply",
 			init : null
@@ -197,6 +216,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		width : {
 			check : "Number",
+			event : "changeWidth",
 			nullable : true,
 			apply : "_apply",
 			init : null
@@ -207,6 +227,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		xaxes : {
 			check : "qx.data.Array",
+			event : "changeXaxes",
 			apply : "_apply",
 			init : new qx.data.Array()
 		},
@@ -216,6 +237,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		yaxes : {
 			check : "qx.data.Array",
+			event : "changeYaxes",
 			apply : "_apply",
 			init : new qx.data.Array()
 		},
@@ -227,6 +249,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		barmode : {
 			check : ["stack","group","overlay","relative"],
+			event : "changeBarmode",
 			apply : "_apply",
 			init : null
 		},
@@ -236,6 +259,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		barnorm : {
 			check : ["","percent","fraction"],
+			event : "changeBarnorm",
 			apply : "_apply",
 			init : null
 		},
@@ -245,6 +269,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		bargap : {
 			check : "Number",
+			event : "changeBargap",
 			apply : "_apply",
 			init : null
 		},
@@ -254,6 +279,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		bargroupgap : {
 			check : "Number",
+			event : "changeBargroupgap",
 			apply : "_apply",
 			init : null
 		},
@@ -265,6 +291,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		 */
 		hiddenlabels : {
 			check : "Array",
+			event : "changeHiddenlabels",
 			apply : "_apply",
 			init : null
 		}
