@@ -126,6 +126,51 @@ qx.Class.define("ae.chart.model.Chart", {
 			return obj;
 		},
 		
+		fromJson : function(obj){
+			var delegate = {
+				getModelClass : function(properties, object, parentproperty, depth) {
+					console.log(properties);
+					console.log(object);
+					console.log(parentproperty);
+					console.log(depth);
+					switch(properties){
+						case "title":
+							return ae.chart.model.layout.Layout;
+							break;
+					}
+					
+					if(depth==0){
+						if(object.data.length>0){
+							object.traces = object.data;
+						}
+						return ae.chart.model.Chart;
+					}
+					
+					if(parentproperty.startsWith("trace")){
+						switch(object.type){
+							case "scatter":
+								return ae.chart.model.trace.Scatter;
+							case "pie":
+								return ae.chart.model.trace.Pie;
+							default:
+								return ae.chart.model.trace.Scatter;
+						}
+					}
+					
+					var font = ["textfont","font","titlefont"];
+					if(font.indexOf(parentproperty)>-1){
+						return ae.chart.model.Font;
+					}
+					
+				}
+			};
+			
+			var marshaler = new qx.data.marshal.Json(delegate);
+			var model = marshaler.toModel(obj);
+			console.log(model)
+			return model;
+		},
+		
 		_apply : function(value, old, name){
 			this._applyEventPropagation(value, old, name);
 		}

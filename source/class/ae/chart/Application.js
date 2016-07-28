@@ -49,6 +49,25 @@ qx.Class.define("ae.chart.Application",
       
       //Create chart's model
       var chartModel = new ae.chart.model.Chart();
+      var m = chartModel.fromJson({
+      	layout:{
+      		title:"MyChart"
+      	},
+      	data:[{
+      		x: [1, 2, 3, 4],
+      		y: [10, 15, 13, 17],
+      		type: 'scatter',
+      		textfont:{
+      			family:"Arial",
+      			size:32
+      		}
+      	},{
+      		x: [1, 2, 3, 4],
+      		y: [16, 5, 11, 9],
+      		type: 'scatter',
+      		mypropo:'er'
+      	}]
+      });
       
       //Layout
       var chartLayout = new ae.chart.model.layout.Layout().set({
