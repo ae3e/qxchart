@@ -229,7 +229,8 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 			check : "qx.data.Array",
 			event : "changeXaxes",
 			apply : "_apply",
-			init : new qx.data.Array()
+			deferredInit : true
+			//init : new qx.data.Array()
 		},
 		
 		/**
@@ -239,7 +240,8 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 			check : "qx.data.Array",
 			event : "changeYaxes",
 			apply : "_apply",
-			init : new qx.data.Array()
+			deferredInit : true
+			//init : new qx.data.Array()
 		},
 		
 		/*****************  BAR CHART ONLY ************/
@@ -300,6 +302,8 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 
 	construct : function() {
 		this.base(arguments);
+		this.initXaxes(new qx.data.Array());
+		this.initYaxes(new qx.data.Array());
 
 	},
 	
