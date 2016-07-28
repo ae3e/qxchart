@@ -65,23 +65,8 @@ qx.Class.define("ae.chart.controller.Plotly",
 
 			//Init the chart with data in the model
 			
-			//I use my own serializer to remove undefined properties
-			var layout = ae.chart.util.Serializer.toNativeObject(model.getLayout());
-
-			if(layout.yaxes){
-				for(var i=0;i<layout.yaxes.length;i++){
-					layout["yaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(layout.yaxes[i]);
-				}
-			}
-			
-			if(layout.xaxes){
-				for(var i=0;i<layout.xaxes.length;i++){
-					layout["xaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(layout.xaxes[i]);
-				}
-			}
-			
-			var data = ae.chart.util.Serializer.toNativeObject(model.getTraces());
-			Plotly.plot(this.getTarget().getPlotlyDiv(),data,layout,model.getConfig());
+			var obj = model.toJson();
+			Plotly.plot(this.getTarget().getPlotlyDiv(),obj.data,obj.layout,model.getConfig());
 			
 			//Bind model to the chart by adding listeners to the model			
 			model.addListener("changeBubble", function(e){

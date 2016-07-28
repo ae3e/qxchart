@@ -104,6 +104,28 @@ qx.Class.define("ae.chart.model.Chart", {
 			this.fireDataEvent("moveTrace",e);
 		},
 		
+		toJson : function(){
+			var obj = {};
+			
+			//I use my own serializer to remove undefined properties
+			obj.layout = ae.chart.util.Serializer.toNativeObject(this.getLayout());
+			obj.data = ae.chart.util.Serializer.toNativeObject(this.getTraces());
+
+			if(obj.layout.yaxes){
+				for(var i=0;i<obj.layout.yaxes.length;i++){
+					obj.layout["yaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(obj.layout.yaxes[i]);
+				}
+			}
+			
+			if(obj.layout.xaxes){
+				for(var i=0;i<obj.layout.xaxes.length;i++){
+					obj.layout["xaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(obj.layout.xaxes[i]);
+				}
+			}
+
+			return obj;
+		},
+		
 		_apply : function(value, old, name){
 			this._applyEventPropagation(value, old, name);
 		}
