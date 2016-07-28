@@ -61,18 +61,20 @@ qx.Class.define("ae.chart.ui.Chart", {
 		 */
 		getPlotlyDiv : function(){
 			return this.getContentElement().getDomElement();
-		}
+		},
 		
 		/**
 		 * Save chart as json, svg or image
 		 * @param format {String} Format 'jpeg' | 'png' | 'json' | 'svg'
 		 */
-		//DOES NOT WORK!!!
-		/*saveAs : function(format, filename){
+		saveAs : function(format, filename){
 			switch (format){
 			case "svg" :
-				var svg = Plotly.Snapshot.toSVG(gd, {format: format});
+				var gd = this.getPlotlyDiv();
+				var svg = Plotly.Snapshot.toSVG(gd);
 				console.log(svg);
+				//??????????
+				//svg = svg.replace(/"'Open Sans'",/g,'');
 				var blob = new Blob([svg], {type: "text/plain;charset=utf-8"});
 				
 				filename += '.' + format;
@@ -147,6 +149,6 @@ qx.Class.define("ae.chart.ui.Chart", {
 		        });
 		        break;
 			}
-		}*/
+		}
 	}
 });

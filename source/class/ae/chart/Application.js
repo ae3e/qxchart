@@ -166,7 +166,7 @@ qx.Class.define("ae.chart.Application",
       var button1 = new qx.ui.form.Button("Change layout");
       button1.addListener("execute",function(e){
           chartLayout.setTitle("My new title");
-          var titlefont = new ae.chart.model.Font(36,["Arial","verdana"]);
+          var titlefont = new ae.chart.model.Font(36,"Arial");
           titlefont.setColor("#ff7f0e");
           chartLayout.setTitlefont(titlefont);
       });
