@@ -66,7 +66,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 			//Init the chart with data in the model
 			
 			var obj = model.toJson();
-			Plotly.plot(this.getTarget().getPlotlyDiv(),obj.data,obj.layout,model.getConfig());
+			Plotly.newPlot(this.getTarget().getPlotlyDiv(),obj.data,obj.layout,model.getConfig());
 			
 			window.plotdiv = this.getTarget().getPlotlyDiv();
 			//Bind model to the chart by adding listeners to the model			

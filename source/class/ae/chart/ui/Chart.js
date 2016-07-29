@@ -14,7 +14,9 @@ qx.Class.define("ae.chart.ui.Chart", {
 		model : {
 			check : "ae.chart.model.Chart",
 			nullable : true,
-			init : null
+			event : "changeModel",
+			init : null,
+			apply : "_applyModel"
 		}
 	},
 	
@@ -49,9 +51,7 @@ qx.Class.define("ae.chart.ui.Chart", {
 
 		this.setModel(model);
 		
-		this.addListenerOnce("appear", function(e){
-			var controller = new ae.chart.controller.Plotly(model,this);
-		},this);
+		
 	},
 
 	members : {
@@ -61,6 +61,16 @@ qx.Class.define("ae.chart.ui.Chart", {
 		 */
 		getPlotlyDiv : function(){
 			return this.getContentElement().getDomElement();
+		},
+		
+		_applyModel : function(value){
+			if(this.getPlotlyDiv()){
+				new ae.chart.controller.Plotly(value,this);
+			}else{
+				this.addListenerOnce("appear", function(e){
+					var controller = new ae.chart.controller.Plotly(value,this);
+				},this);
+			}
 		},
 		
 		redraw : function(){
