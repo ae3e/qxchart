@@ -66,12 +66,14 @@ qx.Class.define("ae.chart.controller.Plotly",
 			//Init the chart with data in the model
 			
 			var obj = model.toJson();
+
 			Plotly.newPlot(this.getTarget().getPlotlyDiv(),obj.data,obj.layout,model.getConfig());
 			
 			window.plotdiv = this.getTarget().getPlotlyDiv();
 			//Bind model to the chart by adding listeners to the model			
 			model.addListener("changeBubble", function(e){
 				
+				//console.log(e.getData());
 				var name = e.getData().name;
 				var value = e.getData().value;
 				
@@ -92,7 +94,10 @@ qx.Class.define("ae.chart.controller.Plotly",
 					}
 					obj[attr]= ae.chart.util.Serializer.toNativeObject(value);
 					
-					Plotly.relayout(this.getTarget().getPlotlyDiv(),obj);
+					if(obj[attr]){
+						Plotly.relayout(this.getTarget().getPlotlyDiv(),obj);
+					}
+					
 				}
 				
 				if(name.startsWith("traces") && name.indexOf(".")!=-1){

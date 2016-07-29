@@ -14,7 +14,8 @@ qx.Class.define("ae.chart.model.Chart", {
 			event : "changeLayout",
 			nullable : false,
 			apply : "_apply",
-			init : new ae.chart.model.layout.Layout()
+			deferredInit : true
+			//init : new ae.chart.model.layout.Layout()
 		},
 		
 		/**
@@ -42,6 +43,7 @@ qx.Class.define("ae.chart.model.Chart", {
 	construct : function() {
 		this.base(arguments);
 		this.initTraces(new qx.data.Array());
+		this.initLayout(new ae.chart.model.layout.Layout());
 	},
 
 	events : {
@@ -168,7 +170,7 @@ qx.Class.define("ae.chart.model.Chart", {
 			
 			var marshaler = new qx.data.marshal.Json(delegate);
 			var model = marshaler.toModel(obj);
-			console.log(model)
+
 			return model;
 		},
 		
