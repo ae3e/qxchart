@@ -63,6 +63,10 @@ qx.Class.define("ae.chart.ui.Chart", {
 			return this.getContentElement().getDomElement();
 		},
 		
+		redraw : function(){
+			Plotly.redraw(this.getPlotlyDiv());
+		},
+		
 		/**
 		 * Save chart as json, svg or image
 		 * @param format {String} Format 'jpeg' | 'png' | 'json' | 'svg'
