@@ -88,7 +88,7 @@
 		"exclude": ["ae.chart.test.*","ae.chart.Application"],
 		
 		"add-script" : [
-			{"uri": "https://cdn.plot.ly/plotly-1.15.min.js"}
+			{"uri": "https://cdn.plot.ly/plotly-1.15.0.min.js"}
 		],
 		"environment": {
 			"qx.version" : "${QOOXDOO_VERSION}",

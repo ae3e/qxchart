@@ -21,7 +21,7 @@ qx.$$g = {}
 qx.$$loader = {
   parts : {"boot":[0]},
   packages : {"0":{"uris":["__out__:qxchart.ee1856f7c06b.js.gz"]}},
-  urisBefore : ["https://cdn.plot.ly/plotly-1.15.min.js"],
+  urisBefore : ["https://cdn.plot.ly/plotly-1.15.0.min.js"],
   cssBefore : [],
   boot : "boot",
   closureParts : {},
