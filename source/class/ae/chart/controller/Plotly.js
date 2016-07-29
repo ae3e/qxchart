@@ -94,7 +94,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 					}
 					obj[attr]= ae.chart.util.Serializer.toNativeObject(value);
 					
-					if(obj[attr]){
+					if(obj[attr]!=null){
 						Plotly.relayout(this.getTarget().getPlotlyDiv(),obj);
 					}
 					
