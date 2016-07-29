@@ -93,7 +93,7 @@
 		"environment": {
 			"qx.version" : "${QOOXDOO_VERSION}",
 			"qx.debug": false,
-			"qx.aspects": false
+			"qx.aspects": true
 		},
 
 		"compile-options": {
