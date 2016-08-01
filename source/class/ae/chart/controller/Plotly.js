@@ -73,9 +73,9 @@ qx.Class.define("ae.chart.controller.Plotly",
 			//Bind model to the chart by adding listeners to the model			
 			model.addListener("changeBubble", function(e){
 				
-				//console.log(e.getData());
 				var name = e.getData().name;
 				var value = e.getData().value;
+				var item = e.getData().item;
 				
 				var obj={};
 				
@@ -84,14 +84,49 @@ qx.Class.define("ae.chart.controller.Plotly",
 					
 					if(attr.startsWith("xaxes") || attr.startsWith("yaxes")){
 						var index =parseInt(attr.substring(attr.indexOf("[")+1,attr.indexOf("]")));
+						
+						//Update an axis attribute
 						if(index==0){
+							//x or y axis
 							attr = (attr.substring(0,attr.indexOf("["))+attr.substr(attr.indexOf("]")+1)).replace("e","i");
 						}else{
+							//x2, y2, y3... axis
 							attr = (attr.substring(0,attr.indexOf("["))+(index+1)+attr.substr(attr.indexOf("]")+1)).replace("e","i");
 						}
-						if(Array.isArray(value)){value = value[0];}
 						
+						//If update the axes array (check if array and only one point in name : layout.axes[1] and not layout.axes[1].range
+						var count = (name.match(/\./g) || []).length;
+						if(Array.isArray(value) && count==1){
+
+							//x or y define from layout.xaxis[...
+							var ax = name[7];
+
+							var layout = this.getTarget().getPlotlyDiv().layout;
+							//Remove all existing axes
+							for(o in layout){
+								var regex = new RegExp(ax+"axis\d*");
+								if(o.match(regex)){
+									delete layout[o];
+								}
+							}
+							//Re-create all axes from model
+							for(var i=0;i<item.length;i++){	
+								var a;
+								if(i==0){
+									//x or y axis
+									a = ax + "axis";
+								}else{
+									//x2, y2, y3... axis
+									a = ax + "axis"+(i+1);
+								}
+								layout[a] = ae.chart.util.Serializer.toNativeObject(item.getItem(i));
+							}
+
+							Plotly.redraw(this.getTarget().getPlotlyDiv());
+							return;
+						}
 					}
+					//Update axis attribute or layout attribute
 					obj[attr]= ae.chart.util.Serializer.toNativeObject(value);
 					
 					if(obj[attr]!=null){
@@ -106,7 +141,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 					
 					obj[attr]=ae.chart.util.Serializer.toNativeObject(value);
 					
-					//encapsulate data in array befaore to restyle
+					//encapsulate data in array before to restyle
 					for(var prop in obj){
 						obj[prop] = [obj[prop]];
 					}

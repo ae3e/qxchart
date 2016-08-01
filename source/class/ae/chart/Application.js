@@ -78,10 +78,10 @@ qx.Class.define("ae.chart.Application",
       chartModel.setLayout(chartLayout);
 
       //First trace
-      var scatter1 = new ae.chart.model.trace.Bar();
+      var scatter1 = new ae.chart.model.trace.Scatter();
       scatter1.setX([1, 2, 3, 4]);
       scatter1.setY([10, 15, 13, 17]);
-      scatter1.setOrientation("h");
+      //scatter1.setOrientation("h");
       //scatter1.setMode("markers");
       
       //Second trace
@@ -174,7 +174,7 @@ qx.Class.define("ae.chart.Application",
       var button2 = new qx.ui.form.Button("Change data");
       button2.addListener("execute",function(e){
           
-          scatter1.setY([[8, 15, 22, 17]]);
+          scatter1.setY([8, 15, 22, 17]);
 
       });
       
