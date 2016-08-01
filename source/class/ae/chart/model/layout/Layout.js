@@ -87,6 +87,7 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 			check : ["x","y","closest",false],
 			event : "changeHovermode",
 			apply : "_apply",
+			nullable : true,
 			init : null
 		},
 		
