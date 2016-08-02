@@ -114,57 +114,103 @@ qx.Class.define("ae.chart.model.Chart", {
 			obj.layout = ae.chart.util.Serializer.toNativeObject(this.getLayout());
 			obj.data = ae.chart.util.Serializer.toNativeObject(this.getTraces());
 
-			if(obj.layout.yaxes){
-				for(var i=0;i<obj.layout.yaxes.length;i++){
-					obj.layout["yaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(obj.layout.yaxes[i]);
-				}
+			for(var i=0;i<this.getLayout().getYaxes().length;i++){
+				obj.layout["yaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(this.getLayout().getYaxes().getItem(i));
 			}
-			
-			if(obj.layout.xaxes){
-				for(var i=0;i<obj.layout.xaxes.length;i++){
-					obj.layout["xaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(obj.layout.xaxes[i]);
-				}
+		
+			for(var i=0;i<this.getLayout().getXaxes().length;i++){
+				obj.layout["xaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(this.getLayout().getXaxes().getItem(i));
 			}
 
 			return obj;
 		},
 		
 		fromJson : function(obj){
-			var delegate = {
-				getModelClass : function(properties, object, parentproperty, depth) {
-					console.log(properties);
-					console.log(object);
-					console.log(parentproperty);
-					console.log(depth);
-					switch(properties){
-						case "title":
-							return ae.chart.model.layout.Layout;
+			
+			if(obj.data.length>0){
+				obj.traces = obj.data;
+			}
+			obj.layout.xaxes=[];
+			obj.layout.yaxes=[];
+			var xdefault,ydefault;
+			for(var prop in obj.layout){
+				//xaxis,yaxis,xaxis2,yaxis2,...
+				if(prop.match(/xaxis1?$/)){
+					xdefault=1;
+				}
+				if(prop.match(/yaxis1?$/)){
+					ydefault=1;
+				}
+				if(prop.match(/.axis\d*/)){
+					switch(prop[0]){
+						case "x":
+							obj.layout.xaxes.push(obj.layout[prop]);
+							break;
+						case "y":
+							obj.layout.yaxes.push(obj.layout[prop]);
 							break;
 					}
+				}
+			}
+			if(!xdefault){
+				obj.layout.xaxes.unshift({});
+			}
+
+			if(!ydefault){
+				obj.layout.yaxes.unshift({});
+			}
+			
+			var delegate = {
+				getModelClass : function(properties, object, parentproperty, depth) {
+					/*console.log(properties);
+					console.log(object);
+					console.log(parentproperty);
+					console.log(depth);*/
 					
 					if(depth==0){
-						if(object.data.length>0){
-							object.traces = object.data;
-						}
 						return ae.chart.model.Chart;
-					}
-					
-					if(parentproperty.startsWith("trace")){
-						switch(object.type){
-							case "scatter":
-								return ae.chart.model.trace.Scatter;
-							case "pie":
-								return ae.chart.model.trace.Pie;
-							default:
-								return ae.chart.model.trace.Scatter;
+					}else{
+
+						//traces[0],traces[1],...
+						if(parentproperty.startsWith("trace")){
+							parentproperty="traces";
+						}
+						
+						//xaxes[0],yaxes[1],...
+						if(parentproperty.match(/.axes/)){
+							parentproperty="axis";
+						}
+						
+						switch(parentproperty){
+							case "textfont":
+							case "titlefont":
+							case "font":
+								return ae.chart.model.Font;
+								break;
+							case "marker":
+								return ae.chart.model.trace.auxiliary.Marker;
+								break;
+							case "line":
+								return ae.chart.model.trace.auxiliary.Line;
+								break;
+							case "layout":
+								return ae.chart.model.layout.Layout;
+								break;
+							case "axis":
+								return ae.chart.model.axis.Axis;
+								break;
+							case "traces":
+								switch(object.type){
+								case "scatter":
+									return ae.chart.model.trace.Scatter;
+								case "pie":
+									return ae.chart.model.trace.Pie;
+								default:
+									return ae.chart.model.trace.Scatter;
+								}
+								break;
 						}
 					}
-					
-					var font = ["textfont","font","titlefont"];
-					if(font.indexOf(parentproperty)>-1){
-						return ae.chart.model.Font;
-					}
-					
 				}
 			};
 			
