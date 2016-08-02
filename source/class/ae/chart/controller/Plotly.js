@@ -83,16 +83,6 @@ qx.Class.define("ae.chart.controller.Plotly",
 					var attr = name.substr(name.indexOf(".")+1);
 					
 					if(attr.startsWith("xaxes") || attr.startsWith("yaxes")){
-						var index =parseInt(attr.substring(attr.indexOf("[")+1,attr.indexOf("]")));
-						
-						//Update an axis attribute
-						if(index==0){
-							//x or y axis
-							attr = (attr.substring(0,attr.indexOf("["))+attr.substr(attr.indexOf("]")+1)).replace("e","i");
-						}else{
-							//x2, y2, y3... axis
-							attr = (attr.substring(0,attr.indexOf("["))+(index+1)+attr.substr(attr.indexOf("]")+1)).replace("e","i");
-						}
 						
 						//If update the axes array (check if array and only one point in name : layout.axes[1] and not layout.axes[1].range
 						var count = (name.match(/\./g) || []).length;
@@ -125,6 +115,16 @@ qx.Class.define("ae.chart.controller.Plotly",
 							Plotly.redraw(this.getTarget().getPlotlyDiv());
 							return;
 						}
+						
+						//Update an axis attribute
+						var index =parseInt(attr.substring(attr.indexOf("[")+1,attr.indexOf("]")));
+						if(index==0){
+							//x or y axis
+							attr = (attr.substring(0,attr.indexOf("["))+attr.substr(attr.indexOf("]")+1)).replace("e","i");
+						}else{
+							//x2, y2, y3... axis
+							attr = (attr.substring(0,attr.indexOf("["))+(index+1)+attr.substr(attr.indexOf("]")+1)).replace("e","i");
+						}
 					}
 					//Update axis attribute or layout attribute
 					obj[attr]= ae.chart.util.Serializer.toNativeObject(value);
@@ -135,18 +135,46 @@ qx.Class.define("ae.chart.controller.Plotly",
 					
 				}
 				
-				if(name.startsWith("traces") && name.indexOf(".")!=-1){
-					var attr = name.substr(name.indexOf(".")+1);
-					var index =parseInt(name.substring(name.indexOf("[")+1,name.indexOf("]")));
+				if(name.startsWith("traces")){
 					
-					obj[attr]=ae.chart.util.Serializer.toNativeObject(value);
-					
-					//encapsulate data in array before to restyle
-					for(var prop in obj){
-						obj[prop] = [obj[prop]];
-					}
+					//If update the traces array (check if array and no point in name : traces[1] and not traces[1].x
+					if(name.indexOf(".")==-1){
+						//Re-create all traces from model
+						var data = [];
+						if(value.classname=="qx.data.Array"){
+							//Case : model.setTraces(...)
+							for(var i=0;i<item.getTraces().length;i++){	
+								data.push(ae.chart.util.Serializer.toNativeObject(item.getTraces().getItem(i)));
+							}
+							this.getTarget().getPlotlyDiv().data = data.slice();
+							Plotly.redraw(this.getTarget().getPlotlyDiv());
+							return;
+						}else{
+							//Case : model.getTrace().push(...)
+							//@todo Currently it collapse with addTrace, removeTrace and moveTrace events. 
 
-					Plotly.restyle(this.getTarget().getPlotlyDiv(),obj,[index]);
+							/*for(var i=0;i<item.length;i++){	
+								data.push(ae.chart.util.Serializer.toNativeObject(item.getItem(i)));
+							}
+							this.getTarget().getPlotlyDiv().data = data.slice();
+							Plotly.redraw(this.getTarget().getPlotlyDiv());
+							return;
+							*/
+						}
+					}else{
+						//Update a trace attribute
+						var attr = name.substr(name.indexOf(".")+1);
+						var index =parseInt(name.substring(name.indexOf("[")+1,name.indexOf("]")));
+						
+						obj[attr]=ae.chart.util.Serializer.toNativeObject(value);
+						
+						//encapsulate data in array before to restyle
+						for(var prop in obj){
+							obj[prop] = [obj[prop]];
+						}
+
+						Plotly.restyle(this.getTarget().getPlotlyDiv(),obj,[index]);
+					}
 				}
 			},this);			
 			

@@ -223,6 +223,24 @@ qx.Class.define("ae.chart.Application",
     	  button6.setEnabled(false);
       },this);
       
+      var button7 = new qx.ui.form.Button("Update mutliple traces").set({
+    	  enabled:true
+      });
+      button7.addListener("execute",function(e){
+    	  scatter10 = new ae.chart.model.trace.Scatter();
+    	  scatter10.setX([1, 2, 3, 4]);
+    	  scatter10.setY([5, 5, 5, 5]);
+    	  
+    	  scatter11 = new ae.chart.model.trace.Scatter();
+    	  scatter11.setX([1, 2, 3, 4]);
+    	  scatter11.setY([10, 10, 10, 10]);
+    	  
+    	  var traces = new qx.data.Array();
+    	  traces.push(scatter10);
+    	  traces.push(scatter11);
+    	  chartModel.setTraces(traces);
+      },this);
+      
       buttons.add(new qx.ui.core.Spacer(), {flex: 1});
       buttons.add(button1);
       buttons.add(button2);
@@ -230,6 +248,7 @@ qx.Class.define("ae.chart.Application",
       buttons.add(button4);
       buttons.add(button5);
       buttons.add(button6);
+      buttons.add(button7);
       buttons.add(new qx.ui.core.Spacer(), {flex: 1});
       con.add(buttons);
       
@@ -238,3 +257,4 @@ qx.Class.define("ae.chart.Application",
     }
   }
 });
+
