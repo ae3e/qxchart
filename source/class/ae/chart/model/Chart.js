@@ -122,6 +122,28 @@ qx.Class.define("ae.chart.model.Chart", {
 				obj.layout["xaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(this.getLayout().getXaxes().getItem(i));
 			}
 
+			//Check if object is empty
+			function isEmpty(map) {
+			   for(var key in map) {
+			      if (map.hasOwnProperty(key)) {
+			         return false;
+			      }
+			   }
+			   return true;
+			}
+			
+			//Remove null attributes and empties objects
+			function removeNullsAndEmpties(obj,parent,key){
+				for (var k in obj){
+					if (obj[k]===null) delete obj[k];
+					else if (typeof obj[k]=="object") removeNullsAndEmpties(obj[k],obj,k);
+				}
+				if(isEmpty(obj)){
+					delete parent[key];
+				}
+			}
+			removeNullsAndEmpties(obj);
+			
 			return obj;
 		},
 		
