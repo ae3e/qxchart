@@ -60,8 +60,10 @@ var chartWidget = new ae.chart.ui.Chart(chartModel);
 Charts :
 * [Scatter chart](https://bl.ocks.org/adeliz/25ed0f2e700d87c6857a81b24ae19108)
 * [Line chart](https://bl.ocks.org/adeliz/147b4941c1461a9c1cd9e222c142592a)
-* [Bubble chart](https://bl.ocks.org/adeliz/32e240fcb71d58ddbddb9de4d64ab393)
+* [Bar chart](https://bl.ocks.org/adeliz/32b50d1b99ddfbb47c7cf94fe59bebe1)
+* [Pie chart](https://bl.ocks.org/adeliz/022e9b99228d07dca23fe5eb0e11cef0)
 * [Area chart](https://bl.ocks.org/adeliz/184fbde7927bba962565e9e9f6f5edd1)
+* [Bubble chart](https://bl.ocks.org/adeliz/32e240fcb71d58ddbddb9de4d64ab393)
 
 Others :
 * [Scatter chart with data labels](https://bl.ocks.org/adeliz/72acf143dec4b38a7a41fa55dea33391)
