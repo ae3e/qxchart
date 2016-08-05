@@ -93,7 +93,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 
 							var layout = this.getTarget().getPlotlyDiv().layout;
 							//Remove all existing axes
-							for(o in layout){
+							for(var o in layout){
 								var regex = new RegExp(ax+"axis\d*");
 								if(o.match(regex)){
 									delete layout[o];

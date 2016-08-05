@@ -73,6 +73,10 @@ qx.Class.define("ae.chart.ui.Chart", {
 			}
 		},
 		
+		
+		/**
+		 * Redraw the chart
+		 */
 		redraw : function(){
 			Plotly.redraw(this.getPlotlyDiv());
 		},
@@ -80,6 +84,7 @@ qx.Class.define("ae.chart.ui.Chart", {
 		/**
 		 * Save chart as json, svg or image
 		 * @param format {String} Format 'jpeg' | 'png' | 'json' | 'svg'
+		 * @param filename {String} File's name
 		 */
 		saveAs : function(format, filename){
 			switch (format){

@@ -107,6 +107,10 @@ qx.Class.define("ae.chart.model.Chart", {
 			this.fireDataEvent("moveTrace",e);
 		},
 		
+		/**
+		 * Serializes the chart object into a native javascript object.
+		 * @return {Object} The serialized object.
+		 */
 		toJson : function(){
 			var obj = {};
 			
@@ -147,6 +151,11 @@ qx.Class.define("ae.chart.model.Chart", {
 			return obj;
 		},
 		
+		/**
+		 * Update the chart's model with a native javascript object.
+		 * @param obj {Object} The native javascript object.
+		 * @return {ae.chart.model.Chart} The chart's model.
+		 */
 		fromJson : function(obj){
 			
 			if(obj.data.length>0){

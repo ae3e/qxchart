@@ -227,11 +227,11 @@ qx.Class.define("ae.chart.Application",
     	  enabled:true
       });
       button7.addListener("execute",function(e){
-    	  scatter10 = new ae.chart.model.trace.Scatter();
+    	  var scatter10 = new ae.chart.model.trace.Scatter();
     	  scatter10.setX([1, 2, 3, 4]);
     	  scatter10.setY([5, 5, 5, 5]);
     	  
-    	  scatter11 = new ae.chart.model.trace.Scatter();
+    	  var scatter11 = new ae.chart.model.trace.Scatter();
     	  scatter11.setX([1, 2, 3, 4]);
     	  scatter11.setY([10, 10, 10, 10]);
     	  

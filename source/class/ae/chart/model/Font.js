@@ -42,6 +42,11 @@ qx.Class.define("ae.chart.model.Font", {
 	},
 
 
+	/**
+	   * @param size {String?} The font size (Unit: pixel)
+	   * @param family {String?} A list of font families (separated by ;)
+	   * @param color {String?} The text color
+	   */
 	construct : function(size,family,color) {
 		this.base(arguments);
 		if(size){this.setSize(size);}
