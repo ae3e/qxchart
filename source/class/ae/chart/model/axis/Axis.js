@@ -402,7 +402,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		/**
 		 * Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this axis' are drawn outside (inside) the axis lines.
 		 */
-		tick : {
+		ticks : {
 			check : ["inside","outside",""],
 			event : "changeTick",
 			apply : "_apply",
