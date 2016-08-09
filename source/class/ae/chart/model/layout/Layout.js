@@ -104,12 +104,15 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 		/*
 		legend : {
 		
-		},
+		},*/
 		
+		/**
+		 * Margin
+		 */
 		margin : {
-		
+			check : "ae.chart.model.layout.Margin",
+			apply : "_apply"
 		},
-		*/
 		
 		/**
 		 * For polar plots only. Rotates the entire polar by the given angle.
