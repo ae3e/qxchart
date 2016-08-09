@@ -101,16 +101,21 @@ qx.Class.define("ae.chart.model.layout.Layout", {
 			init : new qx.data.Array()
 		},
 		
-		/*
+		/**
+		 * Legend
+		 */
 		legend : {
-		
-		},*/
+			check : "ae.chart.model.layout.Legend",
+			event : "changeLegend",
+			apply : "_apply"
+		},
 		
 		/**
 		 * Margin
 		 */
 		margin : {
 			check : "ae.chart.model.layout.Margin",
+			event : "changeMargin",
 			apply : "_apply"
 		},
 		
