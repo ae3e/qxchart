@@ -12,6 +12,7 @@
  * This is the main application class of your custom application "qxchart"
  *
  * @asset(ae/chart/*)
+ * @asset(plotly/*)
  */
 qx.Class.define("ae.chart.Application",
 {
@@ -152,6 +153,8 @@ qx.Class.define("ae.chart.Application",
       page2.add(new ae.chart.test.ScatterTest(),{flex:1});
       tabView.add(page2);
       
+      
+      
       var con = new qx.ui.container.Composite(new qx.ui.layout.VBox());
       con.add(chart,{flex:1});
       
@@ -159,6 +162,11 @@ qx.Class.define("ae.chart.Application",
       page3.setLayout(new qx.ui.layout.VBox());
       page3.add(con,{flex:1});
       tabView.add(page3);
+      
+      var page4 = new qx.ui.tabview.Page("Datasource");
+      page4.setLayout(new qx.ui.layout.VBox());
+      page4.add(new ae.chart.test.DatasourceTest(),{flex:1});
+      tabView.add(page4);
       
       var buttons = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
     	  margin: [0, 0, 30, 0]

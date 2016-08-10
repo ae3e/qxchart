@@ -67,7 +67,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 			
 			var obj = model.toJson();
 
-			Plotly.newPlot(this.getTarget().getPlotlyDiv(),obj.data,obj.layout,model.getConfig());
+			Plotly.newPlot(this.getTarget().getPlotlyDiv(),obj.data,obj.layout,obj.datasources,model.getConfig());
 			
 			window.plotdiv = this.getTarget().getPlotlyDiv();
 			//Bind model to the chart by adding listeners to the model			
@@ -175,6 +175,11 @@ qx.Class.define("ae.chart.controller.Plotly",
 
 						Plotly.restyle(this.getTarget().getPlotlyDiv(),obj,[index]);
 					}
+				}
+				
+				if(name.startsWith("datasources")){
+					var ds = ae.chart.util.Serializer.toNativeObject(this.getModel().getDatasources());
+					Plotly.updateDataSources(this.getTarget().getPlotlyDiv(),ds);										
 				}
 			},this);			
 			

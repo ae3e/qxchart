@@ -115,6 +115,17 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 			init:true,
 			event : "changeVisible",
 			apply : "_apply"
+		},
+		
+		/**
+		 * Data source (Non-plotly property. Used with https://github.com/adeliz/plotly.datasources)
+		 */
+		source : {
+			check : "ae.chart.model.trace.auxiliary.Source",
+			nullable : true,
+			event : "changeSource",
+			apply : "_apply",
+			init : true
 		}
 	},
 

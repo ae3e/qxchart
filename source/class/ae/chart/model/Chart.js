@@ -31,6 +31,18 @@ qx.Class.define("ae.chart.model.Chart", {
 		},
 		
 		/**
+		 * datasources (Non-plotly property. Used with https://github.com/adeliz/plotly.datasources)
+		 */
+		datasources : {
+			check : "qx.data.Array",
+			nullable : false,
+			event : "changeTraces",
+			apply : "_apply",
+			deferredInit : true
+			//init : new qx.data.Array()
+		},
+		
+		/**
 		 * extra config
 		 */
 		config : {
@@ -43,6 +55,7 @@ qx.Class.define("ae.chart.model.Chart", {
 	construct : function() {
 		this.base(arguments);
 		this.initTraces(new qx.data.Array());
+		this.initDatasources(new qx.data.Array());
 		this.initLayout(new ae.chart.model.layout.Layout());
 	},
 
@@ -117,6 +130,7 @@ qx.Class.define("ae.chart.model.Chart", {
 			//I use my own serializer to remove undefined properties
 			obj.layout = ae.chart.util.Serializer.toNativeObject(this.getLayout());
 			obj.data = ae.chart.util.Serializer.toNativeObject(this.getTraces());
+			obj.datasources = ae.chart.util.Serializer.toNativeObject(this.getDatasources());
 
 			for(var i=0;i<this.getLayout().getYaxes().length;i++){
 				obj.layout["yaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(this.getLayout().getYaxes().getItem(i));

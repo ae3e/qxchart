@@ -120,7 +120,8 @@
 	
     "core" : {
 	       "add-script" : [
-	         {"uri": "resource/plotly/plotly.js"}
+	         {"uri": "resource/plotly/plotly.js"},
+	         {"uri": "resource/plotly/plotly.datasources.min.js"}
 	       ]
 	   },
       "source": {
