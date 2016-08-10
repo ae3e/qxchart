@@ -125,7 +125,7 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 			nullable : true,
 			event : "changeSource",
 			apply : "_apply",
-			init : true
+			init : null
 		}
 	},
 
