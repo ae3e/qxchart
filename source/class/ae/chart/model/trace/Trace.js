@@ -41,7 +41,10 @@ qx.Class.define("ae.chart.model.trace.Trace", {
 		 */
 		marker : {
 			check : "ae.chart.model.trace.auxiliary.Marker",
-			apply : "_apply"
+			event : "changeMarker",
+			nullable : true,
+			apply : "_apply",
+			init : null
 		},
 		
 		/**

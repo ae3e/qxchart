@@ -75,7 +75,10 @@ qx.Class.define("ae.chart.model.trace.Scatter", {
 		 */
 		line : {
 			check : "ae.chart.model.trace.auxiliary.Line",
-			apply : "_apply"
+			event : "changeLine",
+			nullable : true,
+			apply : "_apply",
+			init : null
 		},
 		
 		/**

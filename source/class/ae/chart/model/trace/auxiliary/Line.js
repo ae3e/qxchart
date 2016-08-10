@@ -11,6 +11,8 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Line", {
 		 */
 		color : {
 			check : "String",
+			event : "changeColor",
+			nullable:true,
 			init : null,
 			apply : "_apply"
 		},
@@ -20,6 +22,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Line", {
 		 */
 		smoothing : {
 			check : "Number",
+			event : "changeSmoothing",
 			init : 0,
 			apply : "_apply"
 		},
@@ -29,6 +32,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Line", {
 		 */
 		dash : {
 			check : ["solid","dot","dash","longdash","dashdot","longdashdot"],
+			event : "changeDash",
 			init : "solid",
 			apply : "_apply"
 		},
@@ -38,7 +42,8 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Line", {
 		 */
 		width : {
 			check : "Number",
-			init : 1,
+			event : "changeWidth",
+			init : 2,
 			apply : "_apply"
 		},
 		
@@ -47,6 +52,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Line", {
 		 */
 		shape : {
 			check : ["linear","spline","hv","vh","hvh","vhv"],
+			event : "changeShape",
 			init : "linear",
 			apply : "_apply"
 		}

@@ -11,6 +11,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		autocolorscale : {
 			check : "Boolean",
+			event : "changeAutocolorscale",
 			apply : "_apply",
 			init : true
 		},
@@ -20,6 +21,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		cauto : {
 			check : "Boolean",
+			event : "changeCauto",
 			apply : "_apply",
 			init : true
 		},
@@ -29,6 +31,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		cmax : {
 			check : "Number",
+			event : "changeCmax",
 			apply : "_apply",
 			init : null
 		},
@@ -38,6 +41,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		cmin : {
 			check : "Number",
+			event : "changeCmin",
 			apply : "_apply",
 			init : null
 		},
@@ -47,6 +51,8 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		color : {
 			apply : "_apply",
+			event : "changeColor",
+			nullable:true,
 			init : null
 		},
 		
@@ -60,6 +66,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		colorscale : {
 			apply : "_apply",
+			event : "changeColorscale",
 			init : null
 		},
 		
@@ -73,6 +80,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		maxdisplayed : {
 			check : "Number",
+			event : "changeMaxdisplayed",
 			apply : "_apply",
 			init : 0
 		},
@@ -81,8 +89,10 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 * Sets the marker opacity.
 		 */
 		opacity : {
-			apply : "_apply",
-			init : null
+			check : "Number",
+			init : 1,
+			event : "changeOpacity",
+			apply : "_apply"
 		},
 		
 		/**
@@ -90,6 +100,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		reversescale : {
 			check : "Boolean",
+			event : "changeReversescale",
 			apply : "_apply",
 			init : false
 		},
@@ -99,6 +110,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		showscale : {
 			check : "Boolean",
+			event : "changeShowscale",
 			apply : "_apply",
 			init : false
 		},
@@ -108,6 +120,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		size : {
 			apply : "_apply",
+			event : "changeSize",
 			init : 6
 		},
 		
@@ -117,6 +130,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		sizemin : {
 			check : "Number",
 			apply : "_apply",
+			event : "changeSizemin",
 			init : 0
 		},
 		
@@ -125,6 +139,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		sizemode : {
 			check : ["diameter","area"],
+			event : "changeSizemode",
 			apply : "_apply",
 			init : "diameter"
 		},
@@ -134,6 +149,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		sizeref : {
 			check : "Number",
+			event : "changeSizeref",
 			apply : "_apply",
 			init : 1
 		},
@@ -143,6 +159,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Marker", {
 		 */
 		symbol : {
 			apply : "_apply",
+			event : "changeSymbol",
 			init : "circle"
 		}
 	},
