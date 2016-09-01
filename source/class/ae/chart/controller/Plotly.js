@@ -72,10 +72,17 @@ qx.Class.define("ae.chart.controller.Plotly",
 			window.plotdiv = this.getTarget().getPlotlyDiv();
 			//Bind model to the chart by adding listeners to the model			
 			model.addListener("changeBubble", function(e){
-				
+
 				var name = e.getData().name;
 				var value = e.getData().value;
 				var item = e.getData().item;
+				var old = e.getData().old;
+				
+				//When binding with form, apply is called for each property even if value and old are identical
+				//See http://www.qooxdoo.org/current/pages/core/property_behavior.html and http://www.qooxdoo.org/current/pages/core/defining_properties.html
+				if(value == old){
+					return;
+				}
 				
 				var obj={};
 				
