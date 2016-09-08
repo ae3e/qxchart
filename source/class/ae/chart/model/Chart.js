@@ -130,8 +130,8 @@ qx.Class.define("ae.chart.model.Chart", {
 			//I use my own serializer to remove undefined properties
 			obj.layout = ae.chart.util.Serializer.toNativeObject(this.getLayout());
 			obj.data = ae.chart.util.Serializer.toNativeObject(this.getTraces());
-			obj.datasources = ae.chart.util.Serializer.toNativeObject(this.getDatasources());
-
+			obj.datasources = ae.chart.util.Serializer.toNativeObject(this.getDatasources());			
+			
 			for(var i=0;i<this.getLayout().getYaxes().length;i++){
 				obj.layout["yaxis"+(i+1)]=ae.chart.util.Serializer.toNativeObject(this.getLayout().getYaxes().getItem(i));
 			}
@@ -221,6 +221,11 @@ qx.Class.define("ae.chart.model.Chart", {
 							parentproperty="traces";
 						}
 						
+						//datasources[0],datasources[1],...
+						if(parentproperty.startsWith("datasources")){
+							parentproperty="datasources";
+						}
+						
 						//xaxes[0],yaxes[1],...
 						if(parentproperty.match(/.axes/)){
 							parentproperty="axis";
@@ -244,6 +249,12 @@ qx.Class.define("ae.chart.model.Chart", {
 							case "axis":
 								return ae.chart.model.axis.Axis;
 								break;
+							case "margin":
+								return ae.chart.model.layout.Margin;
+								break;
+							case "legend":
+								return ae.chart.model.layout.Legend;
+								break;
 							case "traces":
 								switch(object.type){
 								case "scatter":
@@ -254,6 +265,14 @@ qx.Class.define("ae.chart.model.Chart", {
 									return ae.chart.model.trace.Scatter;
 								}
 								break;
+							case "datasources":
+								if(object.parameters){object.parameters = JSON.stringify(object.parameters);}
+								return ae.chart.model.Datasource;
+								break;
+							case "source":
+								if(object.parameters){object.parameters = JSON.stringify(object.parameters);}
+								return ae.chart.model.trace.auxiliary.Source;
+								break;
 						}
 					}
 				}
@@ -262,6 +281,19 @@ qx.Class.define("ae.chart.model.Chart", {
 			var marshaler = new qx.data.marshal.Json(delegate);
 			var model = marshaler.toModel(obj);
 
+			for(var i=0;i<model.getTraces().length;i++){
+				if(model.getTraces().getItem(i).getSource()){
+					var parameters = JSON.parse(model.getTraces().getItem(i).getSource().getParameters());
+					if(parameters && parameters.text===undefined){parameters.text=null;}
+					model.getTraces().getItem(i).getSource().setParameters(qx.data.marshal.Json.createModel(parameters,true));
+				}
+			}
+			
+			for(var i=0;i<model.getDatasources().length;i++){
+				if(model.getDatasources().getItem(i).getParameters()){
+					model.getDatasources().getItem(i).setParameters(JSON.parse(model.getDatasources().getItem(i).getParameters()));
+				}
+			}
 			return model;
 		},
 		

@@ -44,7 +44,6 @@ qx.Class.define("ae.chart.model.layout.Legend", {
 			apply : "_apply",
 			event : "changeFont",
 			nullable : true,
-			apply : "_apply",
 			init : null
 		},
 		

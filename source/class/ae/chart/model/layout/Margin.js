@@ -10,7 +10,7 @@ qx.Class.define("ae.chart.model.layout.Margin", {
 		 * Sets the bottom margin (in px).
 		 */
 		b : {
-			check : "Intger",
+			check : "Integer",
 			apply : "_apply",
 			event : "changeB",
 			init : 80
@@ -20,7 +20,7 @@ qx.Class.define("ae.chart.model.layout.Margin", {
 		 * Sets the left margin (in px).
 		 */
 		l : {
-			check : "Intger",
+			check : "Integer",
 			apply : "_apply",
 			event : "changeL",
 			init : 80
@@ -30,7 +30,7 @@ qx.Class.define("ae.chart.model.layout.Margin", {
 		 * Sets the right margin (in px).
 		 */
 		r : {
-			check : "Intger",
+			check : "Integer",
 			apply : "_apply",
 			event : "changeR",
 			init : 80
@@ -40,7 +40,7 @@ qx.Class.define("ae.chart.model.layout.Margin", {
 		 * Sets the top margin (in px).
 		 */
 		t : {
-			check : "Intger",
+			check : "Integer",
 			apply : "_apply",
 			event : "changeT",
 			init : 80
@@ -50,7 +50,7 @@ qx.Class.define("ae.chart.model.layout.Margin", {
 		 * Sets the amount of padding (in px) between the plotting area and the axis lines
 		 */
 		pad : {
-			check : "Intger",
+			check : "Integer",
 			apply : "_apply",
 			event : "changePad",
 			init : 0

@@ -40,7 +40,7 @@ qx.Class.define("ae.chart.model.Datasource", {
 		 * Parameters
 		 */
 		parameters : {
-			check : "Object",
+			//check : "Object",
 			event : "changeParameters",
 			nullable : true,
 			apply : "_apply",

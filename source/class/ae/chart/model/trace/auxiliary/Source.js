@@ -42,7 +42,7 @@ qx.Class.define("ae.chart.model.trace.auxiliary.Source", {
 		 * Parameters
 		 */
 		parameters : {
-			check : "Object",
+			//check : "Object",
 			event : "changeParameters",
 			nullable : true,
 			apply : "_apply",
