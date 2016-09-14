@@ -20,7 +20,7 @@ qx.Class.define("ae.chart.model.layout.Legend", {
 		 * Sets the color of the border enclosing the legend.
 		 */
 		bordercolor : {
-			check : "string",
+			check : "String",
 			apply : "_apply",
 			event : "changeBordercolor",
 			init : "#444"
