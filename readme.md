@@ -7,7 +7,8 @@ qxCHART is a [Qooxdoo](http://qooxdoo.org/) wrapper for [Plotly](https://plot.ly
 ## 1. Add the qxCHART contrib to your project
 
 * Download qxCHART
-* Paste it in your project (e.g. within the top-level directory `contribs`)
+* Paste it in your project (e.g. within the top-level directory `your_app/contribs`)
+* Copy the folder `qxchart/source/resource/plotly` and paste it in `your_app/source/resource/`
 * Add the following in your config.json file
 
 ```json
@@ -17,6 +18,12 @@ qxCHART is a [Qooxdoo](http://qooxdoo.org/) wrapper for [Plotly](https://plot.ly
       "manifest": "contribs/qxchart/Manifest.json"
       }
     ]
+  },
+  "common" : {
+   "add-script" : [
+    {"uri": "resource/plotly/plotly.js"},
+    {"uri": "resource/plotly/plotly.datasources.min.js"}
+   ]
   }
   ...
 }
