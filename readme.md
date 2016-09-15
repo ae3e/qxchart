@@ -73,6 +73,8 @@ Charts :
 * [Bubble chart](https://bl.ocks.org/adeliz/32e240fcb71d58ddbddb9de4d64ab393)
 
 Others :
+* [Customized legend](https://bl.ocks.org/adeliz/091f6be1d0df9c57c7e23dde16528058)
+* [Data binding](https://bl.ocks.org/adeliz/80eea1b89b3a7aea46d668baeff41a4b)
 * [Scatter chart with data labels](https://bl.ocks.org/adeliz/72acf143dec4b38a7a41fa55dea33391)
 * [Multiple axes](https://bl.ocks.org/adeliz/c4102cc7cb339acccfcfce4ae8007039)
 
