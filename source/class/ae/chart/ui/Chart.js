@@ -2,10 +2,11 @@
  * Chart widget
  * 
  * @ignore(Plotly.*)
- * @ignore(saveAs.*)
+ * @asset(plotly/*)
  */
 qx.Class.define("ae.chart.ui.Chart", {
 	extend : qx.ui.core.Widget,
+	include: [ae.chart.MScriptLoader],
 	
 	properties : {
 		/**
@@ -49,9 +50,7 @@ qx.Class.define("ae.chart.ui.Chart", {
 	construct : function(model) {
 		this.base(arguments);
 
-		this.setModel(model);
-		
-		
+		this.setModel(model);	
 	},
 
 	members : {
@@ -64,13 +63,35 @@ qx.Class.define("ae.chart.ui.Chart", {
 		},
 		
 		_applyModel : function(value){
-			if(this.getPlotlyDiv()){
-				new ae.chart.controller.Plotly(value,this);
-			}else{
-				this.addListenerOnce("appear", function(e){
-					var controller = new ae.chart.controller.Plotly(value,this);
-				},this);
+			
+			// do something usefull if all scripts are loaded
+			this.addListener('scriptsReady', function(){
+				if(this.getPlotlyDiv()){
+					new ae.chart.controller.Plotly(value,this);
+				}else{
+					this.addListenerOnce("appear", function(e){
+						var controller = new ae.chart.controller.Plotly(value,this);
+					},this);
+				}
+			}, this);
+			
+			// in debug mode load the uncompressed unobfuscated scripts
+			var src = '';
+			var min = '.min';
+			if (qx.core.Environment.get("qx.debug")) {
+				src = '.src';
+				min = '';
 			}
+			 
+			// initialize the script loading
+			this._loadScriptsDynamic([
+				/*"plotly/jquery"+min+".js",
+				"myapp/highcharts/highcharts"+src+".js"*/
+				"plotly/plotly.js",
+				"plotly/plotly.datasources.min.js"
+			]);
+			
+			
 		},
 		
 		
