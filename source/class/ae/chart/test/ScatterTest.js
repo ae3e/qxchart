@@ -11,6 +11,19 @@ qx.Class.define("ae.chart.test.ScatterTest", {
 			paper_bgcolor : "rgba(0,0,0,0)",
 			width : 200
 		});
+		
+		var annotations = new qx.data.Array();
+		var annotation = new ae.chart.model.layout.Annotation().set({
+			text : "Test",
+			x :2,
+			y : 2.5,
+			xref : "x",
+			yref : "y",
+			showarrow:true
+		});
+		
+		annotations.push(annotation);
+		chartLayout.setAnnotations(annotations);
 		chartModel.setLayout(chartLayout);
 
 		//First trace
@@ -43,6 +56,8 @@ qx.Class.define("ae.chart.test.ScatterTest", {
 		chart.addListener("changeSelection",function(e){
 			console.log(e.getData());
 		},chart);
+		
+		annotation.setBgcolor("red");
 		return chart;
 
 	}
