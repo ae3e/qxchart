@@ -95,15 +95,22 @@ qx.Class.define("ae.chart.ui.Chart", {
 			  head.appendChild(script);*/
 			
 			// initialize the script loading
-			this._loadScriptsDynamic([
-				//"plotly/extras/mathjax/MathJax.js",//?config=TeX-AMS-MML_SVG",
-				//"plotly/plotly.min.js",
-				"plotly/plotly-basic.min.js",
-				"plotly/plotly-cartesian.min.js",
-				"plotly/plotly.datasources.min.js"
-			]);
-			
-			
+			if(window.location.hostname=="bl.ocks.org"){
+				//only for examples on bl.ocks.org
+				this._loadScriptsDynamic([
+    				"https://rawgit.com/adeliz/qxchart/master/source/resource/plotly/plotly-basic.min.js",
+    				"https://rawgit.com/adeliz/qxchart/master/source/resource/plotly/plotly-cartesian.min.js",
+    				"https://rawgit.com/adeliz/qxchart/master/source/resource/plotly/plotly.datasources.min.js"
+    			]);
+			}else{
+				this._loadScriptsDynamic([
+      				//"plotly/extras/mathjax/MathJax.js",//?config=TeX-AMS-MML_SVG",
+      				//"plotly/plotly.min.js",
+      				"plotly/plotly-basic.min.js",
+      				"plotly/plotly-cartesian.min.js",
+      				"plotly/plotly.datasources.min.js"
+      			]);
+			}
 		},
 		
 		
