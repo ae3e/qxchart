@@ -174,7 +174,8 @@ qx.Class.define("ae.chart.model.layout.Annotation", {
 			check : "String",
 			apply : "_apply",
 			event : "changeText",
-			init : true
+			nullable : true,
+			init : null
 		},
 		
 		/**

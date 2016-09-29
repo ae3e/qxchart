@@ -24,6 +24,29 @@ qx.Class.define("ae.chart.test.ScatterTest", {
 		
 		annotations.push(annotation);
 		chartLayout.setAnnotations(annotations);
+		
+		var shapes = new qx.data.Array();
+		var line = new ae.chart.model.trace.auxiliary.Line().set({
+			width:1,
+			dash:"dash",
+			color : "blue"
+		});
+
+		var shape = new ae.chart.model.layout.Shape().set({
+			type : "rect",
+			fillcolor : "yellow",
+			layer : 'below',
+			x0 : 2,
+			x1 : 4,
+			y0 : 2.5,
+			y1 : 8,
+			xref : "x",
+			yref : "y"
+		});
+		shape.setLine(line);
+		shapes.push(shape);
+		chartLayout.setShapes(shapes);
+		
 		chartModel.setLayout(chartLayout);
 
 		//First trace
