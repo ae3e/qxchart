@@ -76,18 +76,30 @@ qx.Class.define("ae.chart.ui.Chart", {
 			}, this);
 			
 			// in debug mode load the uncompressed unobfuscated scripts
-			var src = '';
-			var min = '.min';
+			/*var min = '.min';
 			if (qx.core.Environment.get("qx.debug")) {
-				src = '.src';
 				min = '';
 			}
-			 
+			
+			var head = document.getElementsByTagName("head")[0], script;
+			  script = document.createElement("script");
+			  script.type = "text/x-mathjax-config";
+			  script[(window.opera ? "innerHTML" : "text")] =
+			  "MathJax.Hub.Config({\n" +
+			  "jax: ['input/TeX','input/MathML','output/SVG', 'output/PreviewHTML'],\n" +
+			  "extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js', 'fast-preview.js', 'AssistiveMML.js'],\n" +
+			  "TeX: {\n" +
+			  " extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js']\n" +
+			  "}\n" +
+			  "});"
+			  head.appendChild(script);*/
+			
 			// initialize the script loading
 			this._loadScriptsDynamic([
-				/*"plotly/jquery"+min+".js",
-				"myapp/highcharts/highcharts"+src+".js"*/
-				"plotly/plotly.js",
+				//"plotly/extras/mathjax/MathJax.js",//?config=TeX-AMS-MML_SVG",
+				//"plotly/plotly.min.js",
+				"plotly/plotly-basic.min.js",
+				"plotly/plotly-cartesian.min.js",
 				"plotly/plotly.datasources.min.js"
 			]);
 			
