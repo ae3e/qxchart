@@ -30,7 +30,7 @@ qx.Class.define("ae.chart.model.Datasource", {
 		 * Method
 		 */
 		method : {
-			check : ["GET"],
+			check : ["GET","POST"],
 			init : "GET",
 			event : "changeMethod",
 			apply : "_apply"
