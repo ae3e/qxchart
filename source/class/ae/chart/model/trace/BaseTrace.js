@@ -1,9 +1,10 @@
 ﻿/**
- * Scatter plot
+ * Base trace
  * 
- * The scatter trace type encompasses line charts, scatter charts, text charts, and bubble charts. The data visualized as scatter point or lines is set in `x` and `y`. Text (appearing either on the chart or on hover only) is via `text`. Bubble charts are achieved by setting `marker.size` and/or `marker.color` to a numerical arrays.
+ * Abstract class for bar and scatter traces
  */
 qx.Class.define("ae.chart.model.trace.BaseTrace", {
+	type : "abstract",
 	extend : ae.chart.model.trace.Trace,
 	
 	properties : {
