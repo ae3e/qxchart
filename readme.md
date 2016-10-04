@@ -69,6 +69,8 @@ Others :
 * [Data binding](https://bl.ocks.org/adeliz/80eea1b89b3a7aea46d668baeff41a4b)
 * [Scatter chart with data labels](https://bl.ocks.org/adeliz/72acf143dec4b38a7a41fa55dea33391)
 * [Multiple axes](https://bl.ocks.org/adeliz/c4102cc7cb339acccfcfce4ae8007039)
+* [Annotations](https://bl.ocks.org/adeliz/d1913f2b867b647c3afafa310794f045)
+* [Shapes](https://bl.ocks.org/adeliz/1eb6846fc58bf0ec62f794c4d65439da)
 
 
 ## 4. Documentation
