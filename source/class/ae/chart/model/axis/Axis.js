@@ -195,7 +195,7 @@ qx.Class.define("ae.chart.model.axis.Axis", {
 		 * Sets the position of this axis in the plotting space (in normalized coordinates). Only has an effect if `anchor` is set to *free*.
 		 */
 		position : {
-			check : "Integer",
+			check : "Number",
 			event : "changePosition",
 			apply : "_apply",
 			nullable :true,
