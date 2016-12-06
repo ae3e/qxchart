@@ -16,6 +16,36 @@ qx.Class.define("ae.chart.model.trace.Bar", {
 			init : null,
 			event : "changeOrientation",
 			apply : "_apply"
+		},
+		
+		/**
+		 * Sets the bar width (in position axis units).
+		 */
+		width : {
+			nullable : true,
+			init : null,
+			event : "changeWidth",
+			apply : "_apply"
+		},
+		
+		/**
+		 * Sets where the bar base is drawn (in position axis units). In *stack* or *relative* barmode, traces that set *base* will be excluded and drawn in *overlay* mode instead.
+		 */
+		base : {
+			nullable : true,
+			init : null,
+			event : "changeBase",
+			apply : "_apply"
+		},
+		
+		/**
+		 * Shifts the position where the bar is drawn (in position axis units). In *group* barmode, traces that set *offset* will be excluded and drawn in *overlay* mode instead.
+		 */
+		offset : {
+			nullable : true,
+			init : null,
+			event : "changeOffset",
+			apply : "_apply"
 		}
 	},
 

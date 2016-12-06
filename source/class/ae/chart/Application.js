@@ -168,6 +168,11 @@ qx.Class.define("ae.chart.Application",
       page4.add(new ae.chart.test.DatasourceTest(),{flex:1});
       tabView.add(page4);
       
+      var page5 = new qx.ui.tabview.Page("Bar");
+      page5.setLayout(new qx.ui.layout.VBox());
+      page5.add(new ae.chart.test.BarTest(),{flex:1});
+      tabView.add(page5);
+      
       var buttons = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
     	  margin: [0, 0, 30, 0]
       });
