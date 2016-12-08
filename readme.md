@@ -8,9 +8,17 @@ qxCHART is a [Qooxdoo](http://qooxdoo.org/) wrapper for [Plotly](https://plot.ly
 
 * Download qxCHART
 * Unzip it in your project (e.g. within the top-level directory `your_app/contribs`)
-* Add the following in your config.json file
+* Add the following in your config.json file (some parts may already exist and you have to insert only the right lines)
 
 ```json
+"include": [
+  {
+    "path" : "${QXCHART}/qxchart.json"
+  }
+],
+"let": {
+  "QXCHART" : "../../../qxchart"
+},
 "jobs" : {
   "libraries" : {
     "library" : [{
@@ -20,6 +28,7 @@ qxCHART is a [Qooxdoo](http://qooxdoo.org/) wrapper for [Plotly](https://plot.ly
   }
 }
 ```
+* Add `@asset(ae/chart/plotly/*)` at the top of your application's class
 
 More infos at http://manual.qooxdoo.org/devel/pages/development/contrib.html
 
@@ -57,20 +66,20 @@ var chartWidget = new ae.chart.ui.Chart(chartModel);
 ## 3. Examples
 
 Charts :
-* [Scatter chart](https://bl.ocks.org/adeliz/25ed0f2e700d87c6857a81b24ae19108)
-* [Line chart](https://bl.ocks.org/adeliz/147b4941c1461a9c1cd9e222c142592a)
-* [Bar chart](https://bl.ocks.org/adeliz/32b50d1b99ddfbb47c7cf94fe59bebe1)
-* [Pie chart](https://bl.ocks.org/adeliz/022e9b99228d07dca23fe5eb0e11cef0)
-* [Area chart](https://bl.ocks.org/adeliz/184fbde7927bba962565e9e9f6f5edd1)
-* [Bubble chart](https://bl.ocks.org/adeliz/32e240fcb71d58ddbddb9de4d64ab393)
+* [Scatter chart](http://tinyurl.com/hez3xb8)
+* [Line chart](http://tinyurl.com/hz9yjqd)
+* [Bar chart](http://tinyurl.com/j29peyy)
+* [Pie chart](http://tinyurl.com/zgtlvos)
+* [Area chart](http://tinyurl.com/jbgcfs2)
+* [Bubble chart](http://tinyurl.com/hfmzec5)
 
 Others :
-* [Customized legend](https://bl.ocks.org/adeliz/091f6be1d0df9c57c7e23dde16528058)
-* [Data binding](https://bl.ocks.org/adeliz/80eea1b89b3a7aea46d668baeff41a4b)
-* [Scatter chart with data labels](https://bl.ocks.org/adeliz/72acf143dec4b38a7a41fa55dea33391)
-* [Multiple axes](https://bl.ocks.org/adeliz/c4102cc7cb339acccfcfce4ae8007039)
-* [Annotations](https://bl.ocks.org/adeliz/d1913f2b867b647c3afafa310794f045)
-* [Shapes](https://bl.ocks.org/adeliz/1eb6846fc58bf0ec62f794c4d65439da)
+* [Customized legend](http://tinyurl.com/zwus38g)
+* [Data binding](http://tinyurl.com/z8skqzh)
+* [Scatter chart with data labels](http://tinyurl.com/jr9cnnm)
+* [Multiple axes](http://tinyurl.com/zqx284d)
+* [Annotations](http://tinyurl.com/zvkqyx7)
+* [Shapes](http://tinyurl.com/hzty9tw)
 
 
 ## 4. Documentation
