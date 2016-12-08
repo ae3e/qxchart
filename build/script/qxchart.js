@@ -21,7 +21,7 @@ qx.$$g = {}
 qx.$$loader = {
   parts : {"boot":[0]},
   packages : {"0":{"uris":["__out__:qxchart.1c0ef3b64eb0.js.gz"]}},
-  urisBefore : ["https://cdn.plot.ly/plotly-basic-1.20.5.min.js","https://cdn.plot.ly/plotly-cartesian-1.20.5.min.js","https://rawgit.com/adeliz/plotly.datasources/master/plotly.datasources.min.js"],
+  urisBefore : [],
   cssBefore : [],
   boot : "boot",
   closureParts : {},

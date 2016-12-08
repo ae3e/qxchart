@@ -87,11 +87,11 @@
 		//"include": ["ae.*"],
 		"exclude": ["ae.chart.test.*","ae.chart.Application"],
 		
-		"add-script" : [
+		/*"add-script" : [
 			{"uri": "https://cdn.plot.ly/plotly-basic-1.20.5.min.js"},
 			{"uri": "https://cdn.plot.ly/plotly-cartesian-1.20.5.min.js"},
 			{"uri": "https://rawgit.com/adeliz/plotly.datasources/master/plotly.datasources.min.js"}
-		],
+		],*/
 		"environment": {
 			"qx.version" : "${QOOXDOO_VERSION}",
 			"qx.debug": false,
@@ -126,13 +126,13 @@
 	         {"uri": "resource/ae/chart/plotly/plotly-cartesian.min.js"},
 	         {"uri": "resource/ae/chart/plotly/plotly.datasources.min.js"}
 	       ]
-	   }
-	   /*,
+	   },
 	
-    "core" : {
+    /*"core" : {
 	       "add-script" : [
-	         {"uri": "resource/plotly/plotly.js"},
-	         {"uri": "resource/plotly/plotly.datasources.min.js"}
+	         {"uri": "resource/ae/chart/plotly/plotly-basic.min.js"},
+	         {"uri": "resource/ae/chart/plotly/plotly-cartesian.min.js"},
+	         {"uri": "resource/ae/chart/plotly/plotly.datasources.min.js"}
 	       ]
 	   },
       "source": {
