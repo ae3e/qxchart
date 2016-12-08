@@ -17,12 +17,12 @@ qxCHART is a [Qooxdoo](http://qooxdoo.org/) wrapper for [Plotly](https://plot.ly
   }
 ],
 "let": {
-  "QXCHART" : "../../../qxchart"
+  "QXCHART" : "contribs/qxchart"
 },
 "jobs" : {
   "libraries" : {
     "library" : [{
-      "manifest": "contribs/qxchart/Manifest.json"
+      "manifest": "${QXCHART}/Manifest.json"
       }
     ]
   }
