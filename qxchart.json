@@ -1,0 +1,46 @@
+{
+    "name" : "Config settings for qxchart users",
+    
+    // integrate the following settings into your config.json
+    /*
+    "let" : {
+        "QXCHART" : "...<path to qxchart library on your disk>..."
+    },
+    "include" : [
+        {
+          "path" : "${QXCHART}/qxchart.json"
+        }
+    ],
+    */
+    
+    "jobs" : {
+        "libraries" : {
+            "library" :
+              [
+                {
+                  "manifest" : "${QXCHART}/Manifest.json"
+                }
+              ]
+        },    
+        "qxchart-resources": {
+          "add-script": [
+            {"uri": "${QXCHART_RESOURCEDIR}/resource/ae/chart/plotly/plotly-basic.min.js"},
+            {"uri": "${QXCHART_RESOURCEDIR}/resource/ae/chart/plotly/plotly-cartesian.min.js"},
+            {"uri": "${QXCHART_RESOURCEDIR}/resource/ae/chart/plotly/plotly.datasources.min.js"},
+          ]
+          /*,
+          "add-css": [
+            {"uri": "${QXCHART_RESOURCEDIR}/resource/qxchart/css/qxchart.min.css"}
+          ]*/
+        },
+    
+        "source-script" : { 
+            "extend": ["qxchart-resources"],
+            "let" : { "QXCHART_RESOURCEDIR" : "../${QXCHART}/source" }
+        },
+        "build-script"  : { 
+            "extend": ["qxchart-resources"],
+            "let" : { "QXCHART_RESOURCEDIR" : "." }
+        }
+    }
+}

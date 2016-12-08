@@ -11,8 +11,6 @@
 /**
  * This is the main application class of your custom application "qxchart"
  *
- * @asset(ae/chart/*)
- * @asset(plotly/*)
  */
 qx.Class.define("ae.chart.Application",
 {

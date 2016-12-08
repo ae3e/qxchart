@@ -2,11 +2,10 @@
  * Chart widget
  * 
  * @ignore(Plotly.*)
- * @asset(plotly/*)
+ * @asset(ae/chart/plotly/*)
  */
 qx.Class.define("ae.chart.ui.Chart", {
 	extend : qx.ui.core.Widget,
-	include: [ae.chart.MScriptLoader],
 	
 	properties : {
 		/**
@@ -64,52 +63,12 @@ qx.Class.define("ae.chart.ui.Chart", {
 		
 		_applyModel : function(value){
 			
-			// do something usefull if all scripts are loaded
-			this.addListener('scriptsReady', function(){
-				if(this.getPlotlyDiv()){
-					new ae.chart.controller.Plotly(value,this);
-				}else{
-					this.addListenerOnce("appear", function(e){
-						var controller = new ae.chart.controller.Plotly(value,this);
-					},this);
-				}
-			}, this);
-			
-			// in debug mode load the uncompressed unobfuscated scripts
-			/*var min = '.min';
-			if (qx.core.Environment.get("qx.debug")) {
-				min = '';
-			}
-			
-			var head = document.getElementsByTagName("head")[0], script;
-			  script = document.createElement("script");
-			  script.type = "text/x-mathjax-config";
-			  script[(window.opera ? "innerHTML" : "text")] =
-			  "MathJax.Hub.Config({\n" +
-			  "jax: ['input/TeX','input/MathML','output/SVG', 'output/PreviewHTML'],\n" +
-			  "extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js', 'fast-preview.js', 'AssistiveMML.js'],\n" +
-			  "TeX: {\n" +
-			  " extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js']\n" +
-			  "}\n" +
-			  "});"
-			  head.appendChild(script);*/
-			
-			// initialize the script loading
-			if(window.location.hostname=="bl.ocks.org"){
-				//only for examples on bl.ocks.org
-				this._loadScriptsDynamic([
-    				"https://rawgit.com/adeliz/qxchart/master/source/resource/plotly/plotly-basic.min.js",
-    				"https://rawgit.com/adeliz/qxchart/master/source/resource/plotly/plotly-cartesian.min.js",
-    				"https://rawgit.com/adeliz/qxchart/master/source/resource/plotly/plotly.datasources.min.js"
-    			]);
+			if(this.getPlotlyDiv()){
+				new ae.chart.controller.Plotly(value,this);
 			}else{
-				this._loadScriptsDynamic([
-      				//"plotly/extras/mathjax/MathJax.js",//?config=TeX-AMS-MML_SVG",
-      				//"plotly/plotly.min.js",
-      				"plotly/plotly-basic.min.js",
-      				"plotly/plotly-cartesian.min.js",
-      				"plotly/plotly.datasources.min.js"
-      			]);
+				this.addListenerOnce("appear", function(e){
+					var controller = new ae.chart.controller.Plotly(value,this);
+				},this);
 			}
 		},
 		

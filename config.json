@@ -88,7 +88,8 @@
 		"exclude": ["ae.chart.test.*","ae.chart.Application"],
 		
 		"add-script" : [
-			{"uri": "https://cdn.plot.ly/plotly-1.15.0.min.js"},
+			{"uri": "https://cdn.plot.ly/plotly-basic-1.20.5.min.js"},
+			{"uri": "https://cdn.plot.ly/plotly-cartesian-1.20.5.min.js"},
 			{"uri": "https://rawgit.com/adeliz/plotly.datasources/master/plotly.datasources.min.js"}
 		],
 		"environment": {
@@ -117,7 +118,16 @@
 		"copy-resources": {
 			"target": "build"
 		}
-	}/*,
+	},
+	
+    "common" : {
+	       "add-script" : [
+	         {"uri": "resource/ae/chart/plotly/plotly-basic.min.js"},
+	         {"uri": "resource/ae/chart/plotly/plotly-cartesian.min.js"},
+	         {"uri": "resource/ae/chart/plotly/plotly.datasources.min.js"}
+	       ]
+	   }
+	   /*,
 	
     "core" : {
 	       "add-script" : [
