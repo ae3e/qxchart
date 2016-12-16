@@ -77,7 +77,7 @@ qx.Class.define("ae.chart.controller.Plotly",
 				var value = e.getData().value;
 				var item = e.getData().item;
 				var old = e.getData().old;
-				
+				console.log(e.getData());
 				//When binding with form, apply is called for each property even if value and old are identical
 				//See http://www.qooxdoo.org/current/pages/core/property_behavior.html and http://www.qooxdoo.org/current/pages/core/defining_properties.html
 				if(value == old){
@@ -148,11 +148,12 @@ qx.Class.define("ae.chart.controller.Plotly",
 					if(name.indexOf(".")==-1){
 						//Re-create all traces from model
 						var data = [];
-						if(value.classname=="qx.data.Array"){
+						if(value.classname=="qx.data.Array" && value.length>0){
 							//Case : model.setTraces(...)
 							for(var i=0;i<item.getTraces().length;i++){	
 								data.push(ae.chart.util.Serializer.toNativeObject(item.getTraces().getItem(i)));
 							}
+
 							this.getTarget().getPlotlyDiv().data = data.slice();
 							Plotly.redraw(this.getTarget().getPlotlyDiv());
 							return;
