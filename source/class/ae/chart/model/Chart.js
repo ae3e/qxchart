@@ -36,7 +36,7 @@ qx.Class.define("ae.chart.model.Chart", {
 		datasources : {
 			check : "qx.data.Array",
 			nullable : false,
-			event : "changeTraces",
+			event : "changeDatasources",
 			apply : "_apply",
 			deferredInit : true
 			//init : new qx.data.Array()
