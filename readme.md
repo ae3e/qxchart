@@ -66,20 +66,20 @@ var chartWidget = new ae.chart.ui.Chart(chartModel);
 ## 3. Examples
 
 Charts :
-* [Scatter chart](http://tinyurl.com/hez3xb8)
-* [Line chart](http://tinyurl.com/hz9yjqd)
-* [Bar chart](http://tinyurl.com/j29peyy)
-* [Pie chart](http://tinyurl.com/zgtlvos)
-* [Area chart](http://tinyurl.com/jbgcfs2)
-* [Bubble chart](http://tinyurl.com/hfmzec5)
+* [Scatter chart](http://tinyurl.com/y4hguzgx)
+* [Line chart](http://tinyurl.com/y663tmap)
+* [Bar chart](http://tinyurl.com/y2vxqh4l)
+* [Pie chart](http://tinyurl.com/yyxve3aa)
+* [Area chart](http://tinyurl.com/y2nnsfdt)
+* [Bubble chart](http://tinyurl.com/y579ujm9)
 
 Others :
-* [Customized legend](http://tinyurl.com/zwus38g)
-* [Data binding](http://tinyurl.com/z8skqzh)
-* [Scatter chart with data labels](http://tinyurl.com/jr9cnnm)
-* [Multiple axes](http://tinyurl.com/zqx284d)
-* [Annotations](http://tinyurl.com/zvkqyx7)
-* [Shapes](http://tinyurl.com/hzty9tw)
+* [Customized legend](http://tinyurl.com/y3xad8bo)
+* [Data binding](http://tinyurl.com/y2y9qb3h)
+* [Scatter chart with data labels](http://tinyurl.com/y66qenpy)
+* [Multiple axes](http://tinyurl.com/y3nr5euv)
+* [Annotations](http://tinyurl.com/y4ackh42)
+* [Shapes](http://tinyurl.com/yy3fe6l9)
 
 
 ## 4. Documentation
